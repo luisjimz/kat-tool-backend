@@ -1,7 +1,7 @@
 package com.luisjimz.kattool.service.impl;
 
 import com.luisjimz.kattool.model.ClientModel;
-import com.luisjimz.kattool.persistence.entity.ClientEntity;
+import com.luisjimz.kattool.model.Model;
 import com.luisjimz.kattool.persistence.repository.ClientRepository;
 import com.luisjimz.kattool.service.ClientService;
 import com.luisjimz.kattool.service.mapper.ClientServiceMapper;
@@ -34,6 +34,7 @@ public class ClientServiceImpl implements ClientService {
     public void delete(String id) {
         repository.deleteById(UUID.fromString(id));
     }
+
 
     @Override
     public ClientModel save(ClientModel userModel) {

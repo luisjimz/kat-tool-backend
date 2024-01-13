@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +18,4 @@ public class ClientModel {
     private String adminEmail;
     private String headquarterState;
     private List<String> reports;
-
-    public ClientModel(Object id, String name, String email) {
-    }
 }

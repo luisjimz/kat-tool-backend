@@ -9,5 +9,4 @@ public class UserCreateHttpRequest {
     public String name;
     public String lastName;
     public String email;
-
 }

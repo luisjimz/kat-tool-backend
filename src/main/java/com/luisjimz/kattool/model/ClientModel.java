@@ -11,7 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 public class ClientModel {
-    private UUID id;
+    private String id;
     private String name;
     private String email;
     private String adminFullName;

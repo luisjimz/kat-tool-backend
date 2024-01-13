@@ -32,11 +32,13 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public void delete(String id) {
-
+        repository.deleteById(UUID.fromString(id));
     }
 
     @Override
     public ReportModel save(ReportModel model) {
-        return null;
+        ReportEntity entity = mapper.toEntity(model);
+        entity = repository.save(entity);
+        return mapper.toModel(entity);
     }
 }

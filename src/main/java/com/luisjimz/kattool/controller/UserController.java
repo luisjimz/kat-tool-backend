@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -17,19 +18,19 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("users")
-    public ResponseEntity<?> getUsers() {
+    public ResponseEntity<Collection<UserModel>> getUsers() {
         return ResponseEntity.ok(userService.get());
     }
 
     @GetMapping("users/{userId}")
-    public ResponseEntity<?> getUser(@PathVariable String userId) {
+    public ResponseEntity<UserModel> getUser(@PathVariable String userId) {
         return ResponseEntity.ok(
                 userService.get(userId)
         );
     }
 
     @PostMapping("users")
-    public ResponseEntity<?> create(@RequestBody UserCreateHttpRequest user) {
+    public ResponseEntity<UserModel> create(@RequestBody UserCreateHttpRequest user) {
         return ResponseEntity.ok(
                 this.userService.save(
                         new UserModel(

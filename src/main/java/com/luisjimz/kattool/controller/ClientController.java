@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @AllArgsConstructor
 @CrossOrigin
@@ -17,19 +19,19 @@ public class ClientController {
     private ClientMapper mapper;
 
     @GetMapping("clients")
-    public ResponseEntity<?> getClients() {
+    public ResponseEntity<Collection<ClientModel>> getClients() {
         return ResponseEntity.ok(clientService.get());
     }
 
     @GetMapping("clients/{clientId}")
-    public ResponseEntity<?> getClient(@PathVariable String clientId) {
+    public ResponseEntity<ClientModel> getClient(@PathVariable String clientId) {
         return ResponseEntity.ok(
                 clientService.get(clientId)
         );
     }
 
     @PostMapping("clients")
-    public ResponseEntity<?> create(@RequestBody ClientCreateHttpRequest client) {
+    public ResponseEntity<ClientModel> create(@RequestBody ClientCreateHttpRequest client) {
         return ResponseEntity.ok(
                 this.clientService.save(mapper.toModel(client))
         );

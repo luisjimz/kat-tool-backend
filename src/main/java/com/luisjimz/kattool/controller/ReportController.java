@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 public class ReportController {
     private ReportService service;
     private ReportMapper mapper;
-
     @GetMapping("reports")
     public ResponseEntity<?> getReports() {
         return ResponseEntity.ok(service.get());

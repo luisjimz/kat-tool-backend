@@ -1,7 +1,10 @@
 package com.luisjimz.kattool.controller.http;
 
-public class ReportCreateHttpRequest {
-    private String clientId;
-//    private String assignedAccountant;
+import lombok.Data;
 
+@Data
+public class ReportCreateHttpRequest {
+    private Long reportTypeId;
+    private String clientId;
+    private String assignedAccountant;
 }

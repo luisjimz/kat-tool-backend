@@ -14,4 +14,9 @@ public class ReportEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(columnDefinition = "uuid")
     private UUID id;
+    private Long reportTypeId;
+    private String clientId;
+    private String assignedAccountant;
+    //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte
+    private String reportStatus; //default =>
 }

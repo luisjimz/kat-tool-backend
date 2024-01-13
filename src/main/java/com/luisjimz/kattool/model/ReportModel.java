@@ -7,20 +7,12 @@ import lombok.Data;
 @Data
 public class ReportModel {
 
-    //todo this report should be done per service sold to the client.
-    // eg. sallaries, taxes & social security are and example of those.
-    /*
-     * Contabilidad de impuestos federales
-     * Presentacion de impuestos estatales
-     * Proceso de nomina
-     * Actualizaciones del IMSS
-     * Actos administrativos SAT
-     */
     private String id;
-    private String reportTypeId;
+    private Long reportTypeId;
     private String clientId;
     private String assignedAccountant;
-    private String reportStatus; //default =>
+    //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte
+    private String reportStatus;
 
     /*
     * IMSS

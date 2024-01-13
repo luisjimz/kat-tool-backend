@@ -5,8 +5,5 @@ import com.luisjimz.kattool.persistence.entity.ClientEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface ClientServiceMapper {
-    ClientEntity toEntity(ClientModel model);
-    ClientModel toModel(ClientEntity entity);
-
+public interface ClientServiceMapper extends ServiceMapper<ClientEntity, ClientModel> {
 }

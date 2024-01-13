@@ -5,7 +5,5 @@ import com.luisjimz.kattool.persistence.entity.ReportTypeEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface ReportTypeServiceMapper {
-    ReportTypeModel toModel(ReportTypeEntity entity);
-    ReportTypeEntity toEntity(ReportTypeModel model);
+public interface ReportTypeServiceMapper extends ServiceMapper<ReportTypeEntity, ReportTypeModel> {
 }

@@ -1,8 +1,5 @@
 package com.luisjimz.kattool.api.service;
 
-import com.luisjimz.kattool.model.ClientModel;
-import com.luisjimz.kattool.model.Model;
-
 import java.util.Collection;
 
 public interface ModelService<T> {

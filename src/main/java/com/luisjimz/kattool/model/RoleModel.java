@@ -1,13 +1,15 @@
 package com.luisjimz.kattool.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class RoleModel {
-
-    private String id;
+    private Long id;
     private String name;
-
 }

@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ReportCreateHttpRequest {
     private Long reportTypeId;
-    private String clientId;
-    private String assignedAccountant;
+    private Long clientId;
+    private Long userId;
 }

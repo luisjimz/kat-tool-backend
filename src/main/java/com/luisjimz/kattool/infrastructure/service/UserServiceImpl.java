@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     private UserModel toModel(UserEntity entity) {
         return new UserModel(
-                entity.getId().toString(),
+                entity.getId(),
                 entity.getName(),
                 entity.getLastName(),
                 entity.getEmail()
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
     private UserEntity toEntity(UserModel model) {
         var entity = new UserEntity();
-        if(model.getId() != null) entity.setId(UUID.fromString(model.getId()));
+        if(model.getId() != null) entity.setId(model.getId());
         entity.setName(model.getName());
         entity.setLastName(model.getLastName());
         entity.setEmail(model.getEmail());

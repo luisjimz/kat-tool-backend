@@ -2,14 +2,18 @@ package com.luisjimz.kattool.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class ReportModel {
-    private String id;
+public class ReportModel{
+
+    private Long id;
     private ReportTypeModel reportType;
-    private String clientId;
-    private String assignedAccountant;
+    private ClientModel client;
+    private UserModel assignedUser;
     private String reportStatus;
 
     //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte

@@ -2,14 +2,14 @@ package com.luisjimz.kattool.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
-@Entity
-@NoArgsConstructor
 @Data
+@Entity
 public class ReportTypeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

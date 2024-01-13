@@ -6,13 +6,13 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class ReportModel {
-
     private String id;
-    private Long reportTypeId;
+    private ReportTypeModel reportType;
     private String clientId;
     private String assignedAccountant;
-    //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte
     private String reportStatus;
+
+    //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte
 
     /*
     * IMSS

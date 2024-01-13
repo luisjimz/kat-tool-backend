@@ -3,9 +3,15 @@ package com.luisjimz.kattool.controller.http;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class ClientCreateHttpRequest {
-    public String name;
-    public String email;
+    private String name;
+    private String email;
+    private String adminFullName;
+    private String adminPhone;
+    private String adminEmail;
+    private String headquarterState;
 }

@@ -1,6 +1,7 @@
 package com.luisjimz.kattool.controller;
 
 import com.luisjimz.kattool.controller.http.ClientCreateHttpRequest;
+import com.luisjimz.kattool.controller.mapper.ClientMapper;
 import com.luisjimz.kattool.model.ClientModel;
 import com.luisjimz.kattool.service.ClientService;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class ClientController {
     
     private ClientService clientService;
+    private ClientMapper mapper;
 
     @GetMapping("clients")
     public ResponseEntity<?> getClients() {
@@ -29,13 +31,7 @@ public class ClientController {
     @PostMapping("clients")
     public ResponseEntity<?> create(@RequestBody ClientCreateHttpRequest client) {
         return ResponseEntity.ok(
-                this.clientService.save(
-                        new ClientModel(
-                                null,
-                                client.getName(),
-                                client.getEmail()
-                        )
-                )
+                this.clientService.save(mapper.toModel(client))
         );
     }
 

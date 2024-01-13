@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Collection<UserModel> get() {
         return userRepository.findAll().stream().map(this::toModel).collect(Collectors.toList());
-
     }
 
     @Override

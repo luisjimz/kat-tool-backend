@@ -42,4 +42,12 @@ public class ReportServiceImpl implements ReportService {
         entity = repository.save(entity);
         return mapper.toModel(entity);
     }
+
+    @Override
+    public Collection<ReportModel> findByUser(Long userId) {
+        return this.repository.findByUserId(userId)
+                .stream()
+                .map(mapper::toModel)
+                .collect(Collectors.toList());
+    }
 }

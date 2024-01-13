@@ -1,6 +1,8 @@
 package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.UserCreateHttpRequest;
+import com.luisjimz.kattool.api.service.ReportService;
+import com.luisjimz.kattool.model.ReportModel;
 import com.luisjimz.kattool.model.UserModel;
 import com.luisjimz.kattool.api.service.UserService;
 import lombok.AllArgsConstructor;
@@ -15,6 +17,7 @@ import java.util.Collection;
 public class UserController {
 
     private UserService userService;
+    private ReportService reportService;
 
     @GetMapping("users")
     public ResponseEntity<Collection<UserModel>> getUsers() {
@@ -48,4 +51,8 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("users/{userId}/reports")
+    public ResponseEntity<Collection<ReportModel>> getReportsForUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(reportService.findByUser(userId));
+    }
 }

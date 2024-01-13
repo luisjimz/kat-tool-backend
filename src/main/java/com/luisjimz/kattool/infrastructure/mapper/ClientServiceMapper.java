@@ -1,4 +1,4 @@
-package com.luisjimz.kattool.infrastructure.service.mapper;
+package com.luisjimz.kattool.infrastructure.mapper;
 
 import com.luisjimz.kattool.model.ClientModel;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;

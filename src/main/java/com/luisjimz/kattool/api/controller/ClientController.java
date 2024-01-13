@@ -1,7 +1,7 @@
 package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.ClientCreateHttpRequest;
-import com.luisjimz.kattool.api.http.mapper.ClientMapper;
+import com.luisjimz.kattool.api.mapper.ClientMapper;
 import com.luisjimz.kattool.model.ClientModel;
 import com.luisjimz.kattool.api.service.ClientService;
 import lombok.AllArgsConstructor;

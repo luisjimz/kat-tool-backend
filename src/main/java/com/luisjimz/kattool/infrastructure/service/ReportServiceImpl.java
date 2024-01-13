@@ -1,11 +1,10 @@
 package com.luisjimz.kattool.infrastructure.service;
 
 import com.luisjimz.kattool.api.service.ReportService;
-import com.luisjimz.kattool.infrastructure.persistence.entity.ReportTypeEntity;
 import com.luisjimz.kattool.model.ReportModel;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ReportEntity;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ReportRepository;
-import com.luisjimz.kattool.infrastructure.service.mapper.ReportServiceMapper;
+import com.luisjimz.kattool.infrastructure.mapper.ReportServiceMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

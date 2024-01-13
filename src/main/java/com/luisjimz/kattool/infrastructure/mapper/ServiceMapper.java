@@ -1,4 +1,4 @@
-package com.luisjimz.kattool.infrastructure.service.mapper;
+package com.luisjimz.kattool.infrastructure.mapper;
 
 public interface ServiceMapper<E, DTO> {
     DTO toModel(E e);

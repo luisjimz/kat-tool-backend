@@ -1,7 +1,7 @@
 package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.ReportCreateHttpRequest;
-import com.luisjimz.kattool.api.http.mapper.ReportMapper;
+import com.luisjimz.kattool.api.mapper.ReportMapper;
 import com.luisjimz.kattool.model.ReportModel;
 import com.luisjimz.kattool.api.service.ReportService;
 import lombok.AllArgsConstructor;

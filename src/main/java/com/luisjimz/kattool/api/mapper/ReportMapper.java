@@ -1,4 +1,4 @@
-package com.luisjimz.kattool.api.http.mapper;
+package com.luisjimz.kattool.api.mapper;
 
 import com.luisjimz.kattool.api.http.ReportCreateHttpRequest;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ReportEntity;

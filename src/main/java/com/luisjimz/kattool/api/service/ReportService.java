@@ -6,4 +6,5 @@ import java.util.Collection;
 
 public interface ReportService extends ModelService<ReportModel> {
     Collection<ReportModel> findByUser(Long userId);
+    Collection<ReportModel> findByClient(Long clientId);
 }

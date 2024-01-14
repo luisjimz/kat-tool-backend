@@ -50,4 +50,12 @@ public class ReportServiceImpl implements ReportService {
                 .map(mapper::toModel)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Collection<ReportModel> findByClient(Long clientId) {
+        return this.repository.findByClientId(clientId)
+                .stream()
+                .map(mapper::toModel)
+                .collect(Collectors.toList());
+    }
 }

@@ -21,12 +21,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserModel get(String id) {
+    public UserModel get(Long id) {
         return userRepository.findById(id).map(this::toModel).orElse(null);
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
     }
 

@@ -21,19 +21,18 @@ public class ReportServiceImpl implements ReportService {
     private ReportServiceMapper mapper;
     @Override
     public Collection<ReportModel> get() {
-        Object a = repository.findAll();
         return repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
     }
 
     @Override
-    public ReportModel get(String id) {
-        Optional<ReportModel> o = repository.findById(UUID.fromString(id)).map(mapper::toModel);
+    public ReportModel get(Long id) {
+        Optional<ReportModel> o = repository.findById(id).map(mapper::toModel);
         return o.get();
     }
 
     @Override
-    public void delete(String id) {
-        repository.deleteById(UUID.fromString(id));
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 
     @Override

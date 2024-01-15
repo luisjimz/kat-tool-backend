@@ -37,7 +37,7 @@ public class ClientController {
     }
 
     @GetMapping("clients/{clientId}")
-    public ResponseEntity<ClientModel> getClient(@PathVariable String clientId) {
+    public ResponseEntity<ClientModel> getClient(@PathVariable Long clientId) {
         return ResponseEntity.ok(
                 clientService.get(clientId)
         );
@@ -51,7 +51,7 @@ public class ClientController {
     }
 
     @DeleteMapping("clients")
-    public ResponseEntity<?> delete(String id) {
+    public ResponseEntity<?> delete(Long id) {
         clientService.delete(id);
         return ResponseEntity.ok().build();
     }

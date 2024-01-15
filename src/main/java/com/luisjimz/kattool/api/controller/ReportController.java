@@ -23,7 +23,7 @@ public class ReportController {
     }
 
     @GetMapping("reports/{reportId}")
-    public ResponseEntity<ReportModel> getReport(@PathVariable String reportId) {
+    public ResponseEntity<ReportModel> getReport(@PathVariable Long reportId) {
         return ResponseEntity.ok(
                 service.get(reportId)
         );
@@ -37,7 +37,7 @@ public class ReportController {
     }
 
     @DeleteMapping("reports")
-    public ResponseEntity<?> delete(String id) {
+    public ResponseEntity<?> delete(Long id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }

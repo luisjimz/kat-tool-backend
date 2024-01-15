@@ -3,10 +3,9 @@ package com.luisjimz.kattool;
 import com.luisjimz.kattool.infrastructure.persistence.entity.*;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ClientRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ReportStatusRepository;
-import com.luisjimz.kattool.infrastructure.persistence.repository.ReportTypeReportStatusRepository;
+import com.luisjimz.kattool.infrastructure.persistence.repository.ReportTypeRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @AllArgsConstructor
@@ -22,14 +22,24 @@ public class Data {
     private final UserRepository userRepository;
     private final ClientRepository clientRepository;
     private final ReportStatusRepository reportStatusRepository;
-    private final ReportTypeReportStatusRepository reportTypeReportStatusRepository;
+    private final ReportTypeRepository reportTypeRepository;
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
         getClients().forEach(clientRepository::save);
         getUsers().forEach(userRepository::save);
         getReportStatuses().forEach(reportStatusRepository::save);
-        getStatusRelationship().forEach(reportTypeReportStatusRepository::save);
+
+
+        //todo remove this / creation of reportType linked to a status.
+        ReportTypeEntity entity = new ReportTypeEntity(
+                null,
+                "name",
+                "description",
+                Set.of(new ReportStatusEntity(1L))
+        );
+
+        reportTypeRepository.save(entity);
     }
 
     /*
@@ -51,59 +61,23 @@ public class Data {
                         0,
                         "waiting_documents",
                         "En espera de documentos por parte del cliente",
-                        "#84cc16",
-                        null)
+                        "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 1, "under_accounting", "","#84cc16", null)
+                new ReportStatusEntity(null, 1, "under_accounting", "","#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 1, "under_review", "","#84cc16", null)
+                new ReportStatusEntity(null, 1, "under_review", "","#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 1, "pending_send_tax_letter", "","#84cc16", null)
+                new ReportStatusEntity(null, 1, "pending_send_tax_letter", "","#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 100, "done", "Completado","#84cc16", null)
+                new ReportStatusEntity(null, 100, "done", "Completado","#84cc16")
         );
-
         return reportStatusEntities;
     }
 
-    private Collection<ReportTypeReportStatusEntity> getStatusRelationship() {
-        List<ReportTypeReportStatusEntity> reportTypeReportStatusEntities = new LinkedList<>();
-        reportTypeReportStatusEntities.add(
-                new ReportTypeReportStatusEntity(
-                        null,
-                        new ReportTypeEntity(1L),
-                        new ReportStatusEntity(1L)
-                )
-        );
-
-        reportTypeReportStatusEntities.add(
-                new ReportTypeReportStatusEntity(
-                        null,
-                        new ReportTypeEntity(1L),
-                        new ReportStatusEntity(2L)
-                )
-        );
-
-        reportTypeReportStatusEntities.add(
-                new ReportTypeReportStatusEntity(
-                        null,
-                        new ReportTypeEntity(1L),
-                        new ReportStatusEntity(3L)
-                )
-        );
-        reportTypeReportStatusEntities.add(
-                new ReportTypeReportStatusEntity(
-                        null,
-                        new ReportTypeEntity(1L),
-                        new ReportStatusEntity(4L)
-                )
-        );
-        return reportTypeReportStatusEntities;
-    }
 
     private Collection<UserEntity> getUsers() {
         List<UserEntity> userEntities = new LinkedList<>();

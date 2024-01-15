@@ -25,13 +25,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientModel get(String id) {
-        return repository.findById(UUID.fromString(id)).map(mapper::toModel).orElse(null);
+    public ClientModel get(Long id) {
+        return repository.findById(id).map(mapper::toModel).orElse(null);
     }
 
     @Override
-    public void delete(String id) {
-        repository.deleteById(UUID.fromString(id));
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 
 

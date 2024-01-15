@@ -1,4 +1,4 @@
-INSERT INTO Report_Type_Entity (Name, Description, Creation_date) VALUES
+INSERT INTO Report_Type (Name, Description, Creation_date) VALUES
 ('Contabilidad de impuestos federales', 'Descripción de Contabilidad de impuestos federales', now()),
 ('Presentacion de impuestos estatales', 'Descripción de Presentacion de impuestos estatales', now()),
 ('Proceso de nomina', 'Descripción de Proceso de nomina', now()),

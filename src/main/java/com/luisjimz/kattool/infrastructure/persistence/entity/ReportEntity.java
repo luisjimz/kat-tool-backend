@@ -6,14 +6,11 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
+@Table(name = "reports")
 public class ReportEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name="report_type_id", nullable=false)
-    private ReportTypeEntity reportType;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
@@ -22,7 +19,12 @@ public class ReportEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
-    //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte
-    private String reportStatus; //default =>
+
+    @ManyToOne
+    @JoinColumn(name="report_type_id", nullable=false)
+    private ReportTypeEntity reportType;
+
+    @ManyToOne
+    private ReportStatusEntity latestReportStatus;
 }
 

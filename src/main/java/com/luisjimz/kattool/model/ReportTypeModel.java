@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,4 +17,5 @@ public class ReportTypeModel {
     private String name;
     private String description;
     private Date creationDate;
+    private Set<ReportStatusModel> statuses;
 }

@@ -5,6 +5,7 @@ import com.luisjimz.kattool.api.service.ReportService;
 import com.luisjimz.kattool.model.ReportModel;
 import com.luisjimz.kattool.model.UserModel;
 import com.luisjimz.kattool.api.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.Collection;
 @RestController
 @AllArgsConstructor
 @CrossOrigin
+@Tag(name = "Users API")
 public class UserController {
 
     private UserService userService;

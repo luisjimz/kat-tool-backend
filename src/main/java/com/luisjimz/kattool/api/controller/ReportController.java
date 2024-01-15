@@ -4,6 +4,7 @@ import com.luisjimz.kattool.api.http.ReportCreateHttpRequest;
 import com.luisjimz.kattool.api.mapper.ReportMapper;
 import com.luisjimz.kattool.model.ReportModel;
 import com.luisjimz.kattool.api.service.ReportService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.Collection;
 
 @RestController
 @AllArgsConstructor
+@Tag(name = "Reports API")
 public class ReportController {
     private ReportService service;
     private ReportMapper mapper;

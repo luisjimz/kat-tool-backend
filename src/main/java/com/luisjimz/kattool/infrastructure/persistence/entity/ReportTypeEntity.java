@@ -3,11 +3,13 @@ package com.luisjimz.kattool.infrastructure.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class ReportTypeEntity {
 
     @Id
@@ -22,4 +24,8 @@ public class ReportTypeEntity {
 
     @Column(nullable = false)
     private final Date creationDate = new Date();
+
+    public ReportTypeEntity(Long id) {
+        this.id = id;
+    }
 }

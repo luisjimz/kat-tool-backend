@@ -29,19 +29,22 @@ public class Data {
         getClients().forEach(clientRepository::save);
         getUsers().forEach(userRepository::save);
         getReportStatuses().forEach(reportStatusRepository::save);
+        ReportTypeEntity entity = reportTypeRepository.findById(1L).get();
+        entity.setStatuses(
+                Set.of(
+                        new ReportStatusEntity(1L),
+                        new ReportStatusEntity(2L),
+                        new ReportStatusEntity(3L),
+                        new ReportStatusEntity(4L),
+                        new ReportStatusEntity(5L),
+                        new ReportStatusEntity(6L),
+                        new ReportStatusEntity(7L),
+                        new ReportStatusEntity(8L)
 
-
-        //todo remove this / creation of reportType linked to a status.
-        ReportTypeEntity entity = new ReportTypeEntity(
-                null,
-                "name",
-                "description",
-                Set.of(new ReportStatusEntity(1L))
+                )
         );
-
         reportTypeRepository.save(entity);
     }
-
     /*
        WAITING_DOCUMENTS = 'En espera de documentacion',
         UNDER_ACCOUNTING = 'En contabilizacion',
@@ -59,25 +62,61 @@ public class Data {
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
                         0,
-                        "waiting_documents",
+                        "WAITING_DOCUMENTS",
                         "En espera de documentos por parte del cliente",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 1, "under_accounting", "","#84cc16")
+                new ReportStatusEntity(null,
+                        0,
+                        "UNDER_ACCOUNTING",
+                        "En contabilizacion",
+                        "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 1, "under_review", "","#84cc16")
+                new ReportStatusEntity(null,
+                        0,
+                        "UNDER_REVIEW",
+                        "Bajo revision de supervisor",
+                        "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 1, "pending_send_tax_letter", "","#84cc16")
+                new ReportStatusEntity(null,
+                        0,
+                        "PENDING_SEND_TAX_LETTER",
+                        "Pendiente de enviar carta de impuestos",
+                        "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null, 100, "done", "Completado","#84cc16")
+                new ReportStatusEntity(null,
+                        0,
+                        "PENDING_APPROVAL",
+                        "Pendiente de enviar carta de impuestos",
+                        "#84cc16")
+        );
+        reportStatusEntities.add(
+                new ReportStatusEntity(null,
+                        0,
+                        "PENDING_SEND_STATEMENT",
+                        "Carta de impuestos enviada",
+                        "#84cc16")
+        );
+        reportStatusEntities.add(
+                new ReportStatusEntity(null,
+                        0,
+                        "STATEMENT_SENT",
+                        "Carta de impuestos enviada",
+                        "#84cc16")
+        );
+        reportStatusEntities.add(
+                new ReportStatusEntity(null,
+                        1,
+                        "DONE",
+                        "Servicio terminado",
+                        "#84cc16")
         );
         return reportStatusEntities;
     }
-
 
     private Collection<UserEntity> getUsers() {
         List<UserEntity> userEntities = new LinkedList<>();

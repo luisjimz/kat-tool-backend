@@ -23,21 +23,25 @@ public class ReportModel{
     *   Altas/bajas - Actualizaciones del IMSS (mensual)
     *   Calculo del pago del IMSS (mensual)
     *
-    * IMPUESTOS
-    *   Calculo del pago de impuestos:
-            WAITING_DOCUMENTS = 'En espera de documentacion',
-            UNDER_ACCOUNTING = 'En contabilizacion',
-            UNDER_REVIEW = 'En revision',
-            PENDING_SEND_TAX_LETTER = 'En espera de enviar carta de impuestos',
-            PENDING_APPROVAL = 'En aprobacion',
-            PENDING_SEND_STATEMENT = 'Pendiente declaración',
-            STATEMENT_SENT = 'Declaracion enviada',
-            DONE = 'Cuenta cerrada',
-            UNKNOWN_STATUS = 'Contact support'
-    *
+    * IMPUESTOS FEDERALES
+                WAITING_DOCUMENTS = 'En espera de documentacion',
+                UNDER_ACCOUNTING = 'En contabilizacion',
+                UNDER_REVIEW = 'En revision',
+                PENDING_SEND_TAX_LETTER = 'En espera de enviar carta de impuestos',
+                PENDING_APPROVAL = 'En aprobacion',
+                PENDING_SEND_STATEMENT = 'Pendiente declaración',
+                STATEMENT_SENT = 'Declaracion enviada',
+                DONE = 'Cuenta cerrada',
+                UNKNOWN_STATUS = 'Contact support'
+    * IMPUESTOS ESTATALES
+                GENERAR DECLARACION
+                DECLARACION ENVIADA
+                PENDIENTE DE PAGO
+                PAGADO
     * NOMINAS
     *   Calculo del pago de nomina VoBo cliente.
-    *       Recepcion de informacion
+                UNDER_ACCOUNTING = 'En contabilizacion',
+
     *           Modificacion de nominas ~
     *       Envio de reporte de nomina al cliente.
     *       Visto bueno cliente.

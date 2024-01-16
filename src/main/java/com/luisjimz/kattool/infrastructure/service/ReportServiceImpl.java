@@ -1,6 +1,7 @@
 package com.luisjimz.kattool.infrastructure.service;
 
 import com.luisjimz.kattool.api.service.ReportService;
+import com.luisjimz.kattool.infrastructure.persistence.entity.ReportStatusEntity;
 import com.luisjimz.kattool.model.ReportModel;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ReportEntity;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ReportRepository;
@@ -19,6 +20,8 @@ public class ReportServiceImpl implements ReportService {
 
     private ReportRepository repository;
     private ReportServiceMapper mapper;
+    private ReportLatestStatusUtil reportLatestStatusUtil;
+
     @Override
     public Collection<ReportModel> get() {
         return repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
@@ -38,6 +41,7 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public ReportModel save(ReportModel model) {
         ReportEntity entity = mapper.toEntity(model);
+        entity.setLatestReportStatus(reportLatestStatusUtil.fromReportType(entity.getReportType()));
         entity = repository.save(entity);
         return mapper.toModel(entity);
     }

@@ -10,10 +10,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Component
 @AllArgsConstructor
@@ -29,6 +26,7 @@ public class Data {
         getClients().forEach(clientRepository::save);
         getUsers().forEach(userRepository::save);
         getReportStatuses().forEach(reportStatusRepository::save);
+        getReportTypes().forEach(reportTypeRepository::save);
         ReportTypeEntity entity = reportTypeRepository.findById(1L).get();
         entity.setStatuses(
                 Set.of(
@@ -44,6 +42,50 @@ public class Data {
                 )
         );
         reportTypeRepository.save(entity);
+    }
+
+    public List<ReportTypeEntity> getReportTypes() {
+        List<ReportTypeEntity> entities = new LinkedList<>();
+        entities.add(
+                new ReportTypeEntity(
+                      1L,
+                      "Contabilidad de impuestos federales",
+                      "Descripción de Contabilidad de impuestos federales",
+                        null
+                )
+        );
+        entities.add(
+                new ReportTypeEntity(
+                        2L,
+                        "Presentacion de impuestos estatales",
+                        "Descripción de Presentacion de impuestos estatales",
+                        null
+                )
+        );
+        entities.add(
+                new ReportTypeEntity(3L,
+                        "Proceso de nomina",
+                        "Descripción de Proceso de nomina",
+                        null
+                )
+        );
+        entities.add(
+                new ReportTypeEntity(
+                        4L,
+                        "Actualizaciones del IMSS",
+                        "Descripción de Actualizaciones del IMSS",
+                        null
+                )
+        );
+        entities.add(
+                new ReportTypeEntity(
+                        5L,
+                        "Actos administrativos SAT",
+                        "Descripción de Actos administrativos SAT",
+                        null
+                )
+        );
+        return entities;
     }
     /*
        WAITING_DOCUMENTS = 'En espera de documentacion',
@@ -68,49 +110,49 @@ public class Data {
         );
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
-                        0,
+                        1,
                         "UNDER_ACCOUNTING",
                         "En contabilizacion",
                         "#84cc16")
         );
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
-                        0,
+                        2,
                         "UNDER_REVIEW",
                         "Bajo revision de supervisor",
                         "#84cc16")
         );
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
-                        0,
+                        3,
                         "PENDING_SEND_TAX_LETTER",
                         "Pendiente de enviar carta de impuestos",
                         "#84cc16")
         );
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
-                        0,
+                        4,
                         "PENDING_APPROVAL",
                         "Pendiente de enviar carta de impuestos",
                         "#84cc16")
         );
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
-                        0,
+                        5,
                         "PENDING_SEND_STATEMENT",
                         "Carta de impuestos enviada",
                         "#84cc16")
         );
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
-                        0,
+                        6,
                         "STATEMENT_SENT",
                         "Carta de impuestos enviada",
                         "#84cc16")
         );
         reportStatusEntities.add(
                 new ReportStatusEntity(null,
-                        1,
+                        100,
                         "DONE",
                         "Servicio terminado",
                         "#84cc16")

@@ -7,6 +7,7 @@ import java.util.Collection;
 public interface ReportService extends ModelService<ReportModel> {
     Collection<ReportModel> findByUser(Long userId);
     Collection<ReportModel> findByClient(Long clientId);
-    Collection<ReportModel> findByUserAndDate(Long userId, String dateSlug);
+    Collection<ReportModel> findByUserAndDateSlug(Long userId, String dateSlug);
+    Collection<ReportModel> findByDateSlug(String dateSlug);
 
 }

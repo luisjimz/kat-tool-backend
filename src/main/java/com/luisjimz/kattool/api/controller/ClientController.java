@@ -26,7 +26,7 @@ public class ClientController {
     private ReportService reportService;
     private ClientMapper mapper;
 
-    @Operation(summary = "Get a product by id", description = "Returns a product as per the id")
+    @Operation(summary = "Return all available clients", description = "Returns all available clients")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved"),
             @ApiResponse(responseCode = "404", description = "Not found - The product was not found")

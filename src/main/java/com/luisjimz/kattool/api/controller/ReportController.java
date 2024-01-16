@@ -18,7 +18,13 @@ public class ReportController {
     private ReportService service;
     private ReportMapper mapper;
     @GetMapping("reports")
-    public ResponseEntity<Collection<ReportModel>> getReports() {
+    public ResponseEntity<Collection<ReportModel>> getReports(
+            @RequestParam(required = false, defaultValue = "01-2024") String dateSlug) {
+        if(dateSlug != null) {
+            return ResponseEntity.ok(
+                    service.findByDateSlug(dateSlug)
+            );
+        }
         return ResponseEntity.ok(service.get());
     }
 

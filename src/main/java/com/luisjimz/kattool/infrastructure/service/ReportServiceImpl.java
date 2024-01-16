@@ -64,7 +64,16 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public Collection<ReportModel> findByUserAndDate(Long userId, String dateSlug) {
+    public Collection<ReportModel> findByUserAndDateSlug(Long userId, String dateSlug) {
+        int[] date = DateUtil.getYearAndMonth(dateSlug);
+        return repository.findByYearAndMonth(date[0], date[1])
+                .stream()
+                .map(mapper::toModel)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<ReportModel> findByDateSlug(String dateSlug) {
         int[] date = DateUtil.getYearAndMonth(dateSlug);
         return repository.findByYearAndMonth(date[0], date[1])
                 .stream()

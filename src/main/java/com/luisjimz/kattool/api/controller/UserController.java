@@ -1,6 +1,7 @@
 package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.UserCreateHttpRequest;
+import com.luisjimz.kattool.api.service.ClientService;
 import com.luisjimz.kattool.api.service.ReportService;
 import com.luisjimz.kattool.model.ReportModel;
 import com.luisjimz.kattool.model.UserModel;
@@ -20,6 +21,7 @@ public class UserController {
 
     private UserService userService;
     private ReportService reportService;
+    private ClientService clientService;
 
     @GetMapping("users")
     public ResponseEntity<Collection<UserModel>> getUsers() {
@@ -62,6 +64,11 @@ public class UserController {
     public ResponseEntity<Collection<ReportModel>> getReportsForUserByDateSlug(
             @PathVariable Long userId,
             @PathVariable String dateSlug) {
-        return ResponseEntity.ok(reportService.findByUserAndDate(userId, dateSlug));
+        return ResponseEntity.ok(reportService.findByUserAndDateSlug(userId, dateSlug));
     }
+
+//    @GetMapping("users/{userId}/clients")
+//    public ResponseEntity<Collection<ReportModel>> getClientsByUserId(){
+//        clientService.
+//    }
 }

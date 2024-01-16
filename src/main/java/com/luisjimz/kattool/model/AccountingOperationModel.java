@@ -9,7 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ReportModel{
+public class AccountingOperationModel {
 
     private Long id;
     private ReportTypeModel reportType;

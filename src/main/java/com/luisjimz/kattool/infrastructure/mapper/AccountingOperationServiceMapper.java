@@ -8,7 +8,7 @@ import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
-public interface ReportServiceMapper extends ServiceMapper<ReportEntity, ReportModel> {
+public interface AccountingOperationServiceMapper extends ServiceMapper<AccountingOperationEntity, AccountingOperationModel> {
     ReportTypeServiceMapper REPORT_TYPE_SERVICE_MAPPER = Mappers.getMapper(ReportTypeServiceMapper.class);
     ClientServiceMapper CLIENT_SERVICE_MAPPER = Mappers.getMapper(ClientServiceMapper.class);
     UserServiceMapper USER_SERVICE_MAPPER = Mappers.getMapper(UserServiceMapper.class);
@@ -19,13 +19,13 @@ public interface ReportServiceMapper extends ServiceMapper<ReportEntity, ReportM
     @Mapping(target = "client", source = "client", qualifiedByName = "clientEntityToClientModel")
     @Mapping(target = "assignedUser", source = "user", qualifiedByName = "userEntityToUserModel")
     @Mapping(target = "latestReportStatus", source = "latestReportStatus", qualifiedByName = "latestReportStatus")
-    ReportModel toModel(ReportEntity entity);
+    AccountingOperationModel toModel(AccountingOperationEntity entity);
 
     @Override
     @Mapping(target = "reportType", source = "reportType", qualifiedByName = "reportTypeModelToReportTypeEntity")
     @Mapping(target = "client", source = "client", qualifiedByName = "clientModelToClientEntity")
     @Mapping(target = "user", source = "assignedUser", qualifiedByName = "userModelToUserEntity")
-    ReportEntity toEntity(ReportModel dto);
+    AccountingOperationEntity toEntity(AccountingOperationModel dto);
 
     @Named("clientModelToClientEntity")
     default ClientEntity clientModelToClientEntity(ClientModel model) {

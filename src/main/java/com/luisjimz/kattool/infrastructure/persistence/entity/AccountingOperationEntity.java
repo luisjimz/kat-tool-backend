@@ -2,16 +2,15 @@ package com.luisjimz.kattool.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "reports")
-@NamedQuery(name = "ReportEntity.findByYearAndMonth",
-        query = "SELECT m FROM ReportEntity m WHERE EXTRACT(YEAR FROM m.creationDate) = :year AND EXTRACT(MONTH FROM m.creationDate) = :month")
-public class ReportEntity {
+@Table(name = "accounting_operation")
+@NamedQuery(name = "AccountingOperationEntity.findByYearAndMonth",
+        query = "SELECT m FROM AccountingOperationEntity m WHERE EXTRACT(YEAR FROM m.creationDate) = :year AND EXTRACT(MONTH FROM m.creationDate) = :month")
+public class AccountingOperationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

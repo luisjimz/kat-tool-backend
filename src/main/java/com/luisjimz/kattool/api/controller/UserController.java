@@ -2,8 +2,8 @@ package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.UserCreateHttpRequest;
 import com.luisjimz.kattool.api.service.ClientService;
-import com.luisjimz.kattool.api.service.ReportService;
-import com.luisjimz.kattool.model.ReportModel;
+import com.luisjimz.kattool.api.service.AccountingOperationService;
+import com.luisjimz.kattool.model.AccountingOperationModel;
 import com.luisjimz.kattool.model.UserModel;
 import com.luisjimz.kattool.api.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,7 +20,7 @@ import java.util.Collection;
 public class UserController {
 
     private UserService userService;
-    private ReportService reportService;
+    private AccountingOperationService accountingOperationService;
     private ClientService clientService;
 
     @GetMapping("users")
@@ -56,15 +56,15 @@ public class UserController {
     }
 
     @GetMapping("users/{userId}/reports")
-    public ResponseEntity<Collection<ReportModel>> getReportsForUser(@PathVariable Long userId) {
-        return ResponseEntity.ok(reportService.findByUser(userId));
+    public ResponseEntity<Collection<AccountingOperationModel>> getReportsForUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(accountingOperationService.findByUser(userId));
     }
 
     @GetMapping("users/{userId}/reports/{dateSlug}")
-    public ResponseEntity<Collection<ReportModel>> getReportsForUserByDateSlug(
+    public ResponseEntity<Collection<AccountingOperationModel>> getReportsForUserByDateSlug(
             @PathVariable Long userId,
             @PathVariable String dateSlug) {
-        return ResponseEntity.ok(reportService.findByUserAndDateSlug(userId, dateSlug));
+        return ResponseEntity.ok(accountingOperationService.findByUserAndDateSlug(userId, dateSlug));
     }
 
 //    @GetMapping("users/{userId}/clients")

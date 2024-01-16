@@ -2,10 +2,10 @@ package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.ClientCreateHttpRequest;
 import com.luisjimz.kattool.api.mapper.ClientMapper;
-import com.luisjimz.kattool.api.service.ReportService;
+import com.luisjimz.kattool.api.service.AccountingOperationService;
+import com.luisjimz.kattool.model.AccountingOperationModel;
 import com.luisjimz.kattool.model.ClientModel;
 import com.luisjimz.kattool.api.service.ClientService;
-import com.luisjimz.kattool.model.ReportModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -23,7 +23,7 @@ import java.util.Collection;
 public class ClientController {
     
     private ClientService clientService;
-    private ReportService reportService;
+    private AccountingOperationService accountingOperationService;
     private ClientMapper mapper;
 
     @Operation(summary = "Return all available clients", description = "Returns all available clients")
@@ -57,8 +57,8 @@ public class ClientController {
     }
 
     @GetMapping("clients/{clientId}/reports")
-    public ResponseEntity<Collection<ReportModel>> getReportsForClient(@PathVariable Long clientId) {
-        return ResponseEntity.ok(reportService.findByClient(clientId));
+    public ResponseEntity<Collection<AccountingOperationModel>> getReportsForClient(@PathVariable Long clientId) {
+        return ResponseEntity.ok(accountingOperationService.findByClient(clientId));
     }
 
 }

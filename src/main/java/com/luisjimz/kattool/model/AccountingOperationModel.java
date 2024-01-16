@@ -13,8 +13,6 @@ public class AccountingOperationModel {
 
     private Long id;
     private AccountingOperationTypeModel accountingOperationType;
-    private ClientModel client;
-    private UserModel assignedUser;
     private AccountingOperationStatusModel latestStatus;
     private Date creationDate;
 

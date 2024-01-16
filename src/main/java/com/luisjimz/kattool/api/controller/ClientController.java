@@ -56,9 +56,4 @@ public class ClientController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("clients/{clientId}/reports")
-    public ResponseEntity<Collection<AccountingOperationModel>> getReportsForClient(@PathVariable Long clientId) {
-        return ResponseEntity.ok(accountingOperationService.findByClient(clientId));
-    }
-
 }

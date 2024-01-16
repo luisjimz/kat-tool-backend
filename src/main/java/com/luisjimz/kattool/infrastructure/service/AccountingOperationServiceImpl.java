@@ -45,32 +45,6 @@ public class AccountingOperationServiceImpl implements AccountingOperationServic
     }
 
     @Override
-    public Collection<AccountingOperationModel> findByUser(Long userId) {
-        return this.repository.findByUserId(userId)
-                .stream()
-                .map(mapper::toModel)
-                .collect(Collectors.toList());
-    }
-
-
-    @Override
-    public Collection<AccountingOperationModel> findByClient(Long clientId) {
-        return this.repository.findByClientId(clientId)
-                .stream()
-                .map(mapper::toModel)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public Collection<AccountingOperationModel> findByUserAndDateSlug(Long userId, String dateSlug) {
-        int[] date = DateUtil.getYearAndMonth(dateSlug);
-        return repository.findByYearAndMonth(date[0], date[1])
-                .stream()
-                .map(mapper::toModel)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public Collection<AccountingOperationModel> findByDateSlug(String dateSlug) {
         int[] date = DateUtil.getYearAndMonth(dateSlug);
         return repository.findByYearAndMonth(date[0], date[1])

@@ -54,21 +54,4 @@ public class UserController {
         userService.delete(id);
         return ResponseEntity.ok().build();
     }
-
-    @GetMapping("users/{userId}/reports")
-    public ResponseEntity<Collection<AccountingOperationModel>> getReportsForUser(@PathVariable Long userId) {
-        return ResponseEntity.ok(accountingOperationService.findByUser(userId));
-    }
-
-    @GetMapping("users/{userId}/reports/{dateSlug}")
-    public ResponseEntity<Collection<AccountingOperationModel>> getReportsForUserByDateSlug(
-            @PathVariable Long userId,
-            @PathVariable String dateSlug) {
-        return ResponseEntity.ok(accountingOperationService.findByUserAndDateSlug(userId, dateSlug));
-    }
-
-//    @GetMapping("users/{userId}/clients")
-//    public ResponseEntity<Collection<ReportModel>> getClientsByUserId(){
-//        clientService.
-//    }
 }

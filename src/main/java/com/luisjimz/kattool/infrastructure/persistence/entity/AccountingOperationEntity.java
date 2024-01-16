@@ -16,14 +16,6 @@ public class AccountingOperationEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private ClientEntity client;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
-
-    @ManyToOne
     @JoinColumn(name="report_type_id", nullable=false)
     private AccountingOperationTypeEntity accountingOperationType;
 
@@ -31,5 +23,10 @@ public class AccountingOperationEntity {
     private AccountingOperationStatusEntity latestStatus;
 
     @Column(nullable = false)
-    private final Date creationDate = new Date();}
+    private final Date creationDate = new Date();
+
+    @ManyToOne
+    @JoinColumn(name = "accountingReportId")
+    private AccountingReportEntity accountingReport;
+}
 

@@ -2,8 +2,8 @@ package com.luisjimz.kattool.infrastructure.mapper;
 
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationTypeEntity;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationStatusEntity;
-import com.luisjimz.kattool.model.AccountingOperationTypeModel;
-import com.luisjimz.kattool.model.AccountingOperationStatusModel;
+import com.luisjimz.kattool.domain.model.AccountingOperationTypeModel;
+import com.luisjimz.kattool.domain.model.AccountingOperationStatusModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

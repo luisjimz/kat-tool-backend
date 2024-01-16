@@ -2,8 +2,8 @@ package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.AccountingOperationCreateHttpRequest;
 import com.luisjimz.kattool.api.mapper.AccountingOperationMapper;
-import com.luisjimz.kattool.model.AccountingOperationModel;
-import com.luisjimz.kattool.api.service.AccountingOperationService;
+import com.luisjimz.kattool.domain.model.AccountingOperationModel;
+import com.luisjimz.kattool.domain.service.AccountingOperationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.luisjimz.kattool.api.service;
+package com.luisjimz.kattool.domain.service;
 
 import java.util.Collection;
 

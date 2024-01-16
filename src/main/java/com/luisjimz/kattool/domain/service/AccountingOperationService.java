@@ -1,6 +1,6 @@
-package com.luisjimz.kattool.api.service;
+package com.luisjimz.kattool.domain.service;
 
-import com.luisjimz.kattool.model.AccountingOperationModel;
+import com.luisjimz.kattool.domain.model.AccountingOperationModel;
 
 import java.util.Collection;
 

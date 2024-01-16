@@ -1,6 +1,6 @@
-package com.luisjimz.kattool.api.service;
+package com.luisjimz.kattool.domain.service;
 
-import com.luisjimz.kattool.model.UserModel;
+import com.luisjimz.kattool.domain.model.UserModel;
 
 import java.util.Collection;
 

@@ -1,7 +1,7 @@
 package com.luisjimz.kattool.api.controller;
 
-import com.luisjimz.kattool.model.AccountingOperationTypeModel;
-import com.luisjimz.kattool.api.service.AccountingOperationTypeService;
+import com.luisjimz.kattool.domain.model.AccountingOperationTypeModel;
+import com.luisjimz.kattool.domain.service.AccountingOperationTypeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

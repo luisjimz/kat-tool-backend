@@ -1,7 +1,7 @@
 package com.luisjimz.kattool.api.mapper;
 
 import com.luisjimz.kattool.api.http.ClientCreateHttpRequest;
-import com.luisjimz.kattool.model.ClientModel;
+import com.luisjimz.kattool.domain.model.ClientModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

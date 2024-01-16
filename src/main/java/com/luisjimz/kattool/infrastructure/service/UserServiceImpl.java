@@ -1,13 +1,12 @@
 package com.luisjimz.kattool.infrastructure.service;
 
-import com.luisjimz.kattool.model.UserModel;
+import com.luisjimz.kattool.domain.model.UserModel;
 import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
 import com.luisjimz.kattool.infrastructure.persistence.repository.UserRepository;
-import com.luisjimz.kattool.api.service.UserService;
+import com.luisjimz.kattool.domain.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.Collection;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service

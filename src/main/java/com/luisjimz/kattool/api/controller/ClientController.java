@@ -2,10 +2,9 @@ package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.ClientCreateHttpRequest;
 import com.luisjimz.kattool.api.mapper.ClientMapper;
-import com.luisjimz.kattool.api.service.AccountingOperationService;
-import com.luisjimz.kattool.model.AccountingOperationModel;
-import com.luisjimz.kattool.model.ClientModel;
-import com.luisjimz.kattool.api.service.ClientService;
+import com.luisjimz.kattool.domain.service.AccountingOperationService;
+import com.luisjimz.kattool.domain.model.ClientModel;
+import com.luisjimz.kattool.domain.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

@@ -1,7 +1,7 @@
 package com.luisjimz.kattool.infrastructure.mapper;
 
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationStatusEntity;
-import com.luisjimz.kattool.model.AccountingOperationStatusModel;
+import com.luisjimz.kattool.domain.model.AccountingOperationStatusModel;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

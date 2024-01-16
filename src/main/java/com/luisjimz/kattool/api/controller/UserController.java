@@ -1,11 +1,10 @@
 package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.UserCreateHttpRequest;
-import com.luisjimz.kattool.api.service.ClientService;
-import com.luisjimz.kattool.api.service.AccountingOperationService;
-import com.luisjimz.kattool.model.AccountingOperationModel;
-import com.luisjimz.kattool.model.UserModel;
-import com.luisjimz.kattool.api.service.UserService;
+import com.luisjimz.kattool.domain.service.ClientService;
+import com.luisjimz.kattool.domain.service.AccountingOperationService;
+import com.luisjimz.kattool.domain.model.UserModel;
+import com.luisjimz.kattool.domain.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

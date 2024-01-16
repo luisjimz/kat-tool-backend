@@ -1,9 +1,9 @@
 package com.luisjimz.kattool.infrastructure.service;
 
-import com.luisjimz.kattool.api.service.AccountingOperationService;
+import com.luisjimz.kattool.domain.service.AccountingOperationService;
 import com.luisjimz.kattool.infrastructure.mapper.AccountingOperationServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationEntity;
-import com.luisjimz.kattool.model.AccountingOperationModel;
+import com.luisjimz.kattool.domain.model.AccountingOperationModel;
 import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

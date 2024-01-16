@@ -1,4 +1,4 @@
-package com.luisjimz.kattool.model;
+package com.luisjimz.kattool.domain.model;
 
 import lombok.*;
 

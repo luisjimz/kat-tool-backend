@@ -57,4 +57,11 @@ public class UserController {
     public ResponseEntity<Collection<ReportModel>> getReportsForUser(@PathVariable Long userId) {
         return ResponseEntity.ok(reportService.findByUser(userId));
     }
+
+    @GetMapping("users/{userId}/reports/{dateSlug}")
+    public ResponseEntity<Collection<ReportModel>> getReportsForUserByDateSlug(
+            @PathVariable Long userId,
+            @PathVariable String dateSlug) {
+        return ResponseEntity.ok(reportService.findByUserAndDate(userId, dateSlug));
+    }
 }

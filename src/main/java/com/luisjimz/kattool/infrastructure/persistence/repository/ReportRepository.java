@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface ReportRepository extends JpaRepository<ReportEntity, Long> {
     Collection<ReportEntity> findByUserId(Long id);
     Collection<ReportEntity> findByClientId(Long clientId);
+    Collection<ReportEntity> findByYearAndMonth(int year, int month);
+
 }

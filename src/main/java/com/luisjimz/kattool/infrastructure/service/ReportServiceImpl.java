@@ -54,9 +54,19 @@ public class ReportServiceImpl implements ReportService {
                 .collect(Collectors.toList());
     }
 
+
     @Override
     public Collection<ReportModel> findByClient(Long clientId) {
         return this.repository.findByClientId(clientId)
+                .stream()
+                .map(mapper::toModel)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<ReportModel> findByUserAndDate(Long userId, String dateSlug) {
+        int[] date = DateUtil.getYearAndMonth(dateSlug);
+        return repository.findByYearAndMonth(date[0], date[1])
                 .stream()
                 .map(mapper::toModel)
                 .collect(Collectors.toList());

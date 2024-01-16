@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class ReportLatestStatusUtil {
 
     ReportStatusEntity fromReportType(ReportTypeEntity entity) {
-
-        return new ReportStatusEntity();
+        //todo implement logic to set the default status upon report type
+        return new ReportStatusEntity(1L);
     }
 }

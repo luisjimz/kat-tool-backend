@@ -2,8 +2,9 @@ package com.luisjimz.kattool.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +15,8 @@ public class ReportModel{
     private ReportTypeModel reportType;
     private ClientModel client;
     private UserModel assignedUser;
-    private String reportStatus;
+    private ReportStatusModel latestReportStatus;
+    private Date creationDate;
 
     //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte
 

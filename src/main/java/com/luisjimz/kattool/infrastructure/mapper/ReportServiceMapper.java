@@ -1,13 +1,7 @@
 package com.luisjimz.kattool.infrastructure.mapper;
 
-import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
-import com.luisjimz.kattool.infrastructure.persistence.entity.ReportEntity;
-import com.luisjimz.kattool.infrastructure.persistence.entity.ReportTypeEntity;
-import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
-import com.luisjimz.kattool.model.ClientModel;
-import com.luisjimz.kattool.model.ReportModel;
-import com.luisjimz.kattool.model.ReportTypeModel;
-import com.luisjimz.kattool.model.UserModel;
+import com.luisjimz.kattool.infrastructure.persistence.entity.*;
+import com.luisjimz.kattool.model.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -18,11 +12,13 @@ public interface ReportServiceMapper extends ServiceMapper<ReportEntity, ReportM
     ReportTypeServiceMapper REPORT_TYPE_SERVICE_MAPPER = Mappers.getMapper(ReportTypeServiceMapper.class);
     ClientServiceMapper CLIENT_SERVICE_MAPPER = Mappers.getMapper(ClientServiceMapper.class);
     UserServiceMapper USER_SERVICE_MAPPER = Mappers.getMapper(UserServiceMapper.class);
+    ReportStatusServiceMapper REPORT_STATUS_SERVICE_MAPPER = Mappers.getMapper(ReportStatusServiceMapper.class);
 
     @Override
     @Mapping(target = "reportType", source = "reportType", qualifiedByName = "reportTypeEntityToReportTypeModel")
     @Mapping(target = "client", source = "client", qualifiedByName = "clientEntityToClientModel")
     @Mapping(target = "assignedUser", source = "user", qualifiedByName = "userEntityToUserModel")
+    @Mapping(target = "latestReportStatus", source = "latestReportStatus", qualifiedByName = "latestReportStatus")
     ReportModel toModel(ReportEntity entity);
 
     @Override
@@ -65,5 +61,10 @@ public interface ReportServiceMapper extends ServiceMapper<ReportEntity, ReportM
     @Named("userEntityToUserModel")
     default UserModel userEntityToUserModel(UserEntity entity) {
         return USER_SERVICE_MAPPER.toModel(entity);
+    }
+
+    @Named("latestReportStatus")
+    default ReportStatusModel latestReportStatus(ReportStatusEntity entity) {
+        return REPORT_STATUS_SERVICE_MAPPER.toModel(entity);
     }
 }

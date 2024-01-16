@@ -2,8 +2,8 @@ package com.luisjimz.kattool;
 
 import com.luisjimz.kattool.infrastructure.persistence.entity.*;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ClientRepository;
-import com.luisjimz.kattool.infrastructure.persistence.repository.ReportStatusRepository;
-import com.luisjimz.kattool.infrastructure.persistence.repository.ReportTypeRepository;
+import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationStatusRepository;
+import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationTypeRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -18,36 +18,36 @@ public class Data {
 
     private final UserRepository userRepository;
     private final ClientRepository clientRepository;
-    private final ReportStatusRepository reportStatusRepository;
-    private final ReportTypeRepository reportTypeRepository;
+    private final AccountingOperationStatusRepository accountingOperationStatusRepository;
+    private final AccountingOperationTypeRepository accountingOperationTypeRepository;
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
         getClients().forEach(clientRepository::save);
         getUsers().forEach(userRepository::save);
-        getReportStatuses().forEach(reportStatusRepository::save);
-        getReportTypes().forEach(reportTypeRepository::save);
-        ReportTypeEntity entity = reportTypeRepository.findById(1L).get();
+        getReportStatuses().forEach(accountingOperationStatusRepository::save);
+        getReportTypes().forEach(accountingOperationTypeRepository::save);
+        AccountingOperationTypeEntity entity = accountingOperationTypeRepository.findById(1L).get();
         entity.setStatuses(
                 Set.of(
-                        new ReportStatusEntity(1L),
-                        new ReportStatusEntity(2L),
-                        new ReportStatusEntity(3L),
-                        new ReportStatusEntity(4L),
-                        new ReportStatusEntity(5L),
-                        new ReportStatusEntity(6L),
-                        new ReportStatusEntity(7L),
-                        new ReportStatusEntity(8L)
+                        new AccountingOperationStatusEntity(1L),
+                        new AccountingOperationStatusEntity(2L),
+                        new AccountingOperationStatusEntity(3L),
+                        new AccountingOperationStatusEntity(4L),
+                        new AccountingOperationStatusEntity(5L),
+                        new AccountingOperationStatusEntity(6L),
+                        new AccountingOperationStatusEntity(7L),
+                        new AccountingOperationStatusEntity(8L)
 
                 )
         );
-        reportTypeRepository.save(entity);
+        accountingOperationTypeRepository.save(entity);
     }
 
-    public List<ReportTypeEntity> getReportTypes() {
-        List<ReportTypeEntity> entities = new LinkedList<>();
+    public List<AccountingOperationTypeEntity> getReportTypes() {
+        List<AccountingOperationTypeEntity> entities = new LinkedList<>();
         entities.add(
-                new ReportTypeEntity(
+                new AccountingOperationTypeEntity(
                       1L,
                       "Contabilidad de impuestos federales",
                       "Descripción de Contabilidad de impuestos federales",
@@ -55,7 +55,7 @@ public class Data {
                 )
         );
         entities.add(
-                new ReportTypeEntity(
+                new AccountingOperationTypeEntity(
                         2L,
                         "Presentacion de impuestos estatales",
                         "Descripción de Presentacion de impuestos estatales",
@@ -63,14 +63,14 @@ public class Data {
                 )
         );
         entities.add(
-                new ReportTypeEntity(3L,
+                new AccountingOperationTypeEntity(3L,
                         "Proceso de nomina",
                         "Descripción de Proceso de nomina",
                         null
                 )
         );
         entities.add(
-                new ReportTypeEntity(
+                new AccountingOperationTypeEntity(
                         4L,
                         "Actualizaciones del IMSS",
                         "Descripción de Actualizaciones del IMSS",
@@ -78,7 +78,7 @@ public class Data {
                 )
         );
         entities.add(
-                new ReportTypeEntity(
+                new AccountingOperationTypeEntity(
                         5L,
                         "Actos administrativos SAT",
                         "Descripción de Actos administrativos SAT",
@@ -99,59 +99,59 @@ public class Data {
         UNKNOWN_STATUS = 'Contact support'
      */
 
-    private Collection <ReportStatusEntity> getReportStatuses() {
-        List<ReportStatusEntity> reportStatusEntities = new LinkedList<>();
+    private Collection <AccountingOperationStatusEntity> getReportStatuses() {
+        List<AccountingOperationStatusEntity> reportStatusEntities = new LinkedList<>();
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         0,
                         "WAITING_DOCUMENTS",
                         "En espera de documentos por parte del cliente",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         1,
                         "UNDER_ACCOUNTING",
                         "En contabilizacion",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         2,
                         "UNDER_REVIEW",
                         "Bajo revision de supervisor",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         3,
                         "PENDING_SEND_TAX_LETTER",
                         "Pendiente de enviar carta de impuestos",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         4,
                         "PENDING_APPROVAL",
                         "Pendiente de enviar carta de impuestos",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         5,
                         "PENDING_SEND_STATEMENT",
                         "Carta de impuestos enviada",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         6,
                         "STATEMENT_SENT",
                         "Carta de impuestos enviada",
                         "#84cc16")
         );
         reportStatusEntities.add(
-                new ReportStatusEntity(null,
+                new AccountingOperationStatusEntity(null,
                         100,
                         "DONE",
                         "Servicio terminado",

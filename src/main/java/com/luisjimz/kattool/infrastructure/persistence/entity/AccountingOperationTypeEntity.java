@@ -3,7 +3,6 @@ package com.luisjimz.kattool.infrastructure.persistence.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -14,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "report_type")
-public class ReportTypeEntity {
+public class AccountingOperationTypeEntity {
 
     @Id
     @Column(name = "typeId")
@@ -36,9 +35,9 @@ public class ReportTypeEntity {
             joinColumns = @JoinColumn(name = "typeId"),
             inverseJoinColumns = @JoinColumn(name = "statusId")
     )
-    private Set<ReportStatusEntity> statuses;
+    private Set<AccountingOperationStatusEntity> statuses;
 
-    public ReportTypeEntity(Long id) {
+    public AccountingOperationTypeEntity(Long id) {
         this.id = id;
     }
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class AccountingOperationCreateHttpRequest {
-    private Long reportTypeId;
+    private Long accountingOperationTypeId;
     private Long clientId;
     private Long userId;
 }

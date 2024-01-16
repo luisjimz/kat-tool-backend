@@ -5,7 +5,7 @@ import com.luisjimz.kattool.model.AccountingOperationModel;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface ReportTypeMapper {
+public interface AccountingOperationTypeMapper {
     AccountingOperationModel toModel(AccountingOperationCreateHttpRequest httpRequest);
 }
 

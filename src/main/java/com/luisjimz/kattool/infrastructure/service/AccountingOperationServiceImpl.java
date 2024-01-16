@@ -39,7 +39,7 @@ public class AccountingOperationServiceImpl implements AccountingOperationServic
     @Override
     public AccountingOperationModel save(AccountingOperationModel model) {
         AccountingOperationEntity entity = mapper.toEntity(model);
-        entity.setLatestReportStatus(reportLatestStatusUtil.fromReportType(entity.getReportType()));
+        entity.setLatestStatus(reportLatestStatusUtil.fromReportType(entity.getAccountingOperationType()));
         entity = repository.save(entity);
         return mapper.toModel(entity);
     }

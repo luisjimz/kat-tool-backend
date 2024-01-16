@@ -9,20 +9,22 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface AccountingOperationServiceMapper extends ServiceMapper<AccountingOperationEntity, AccountingOperationModel> {
-    ReportTypeServiceMapper REPORT_TYPE_SERVICE_MAPPER = Mappers.getMapper(ReportTypeServiceMapper.class);
     ClientServiceMapper CLIENT_SERVICE_MAPPER = Mappers.getMapper(ClientServiceMapper.class);
     UserServiceMapper USER_SERVICE_MAPPER = Mappers.getMapper(UserServiceMapper.class);
-    ReportStatusServiceMapper REPORT_STATUS_SERVICE_MAPPER = Mappers.getMapper(ReportStatusServiceMapper.class);
+    AccountingOperationStatusServiceMapper ACCOUNTING_OPERATION_STATUS_SERVICE_MAPPER =
+            Mappers.getMapper(AccountingOperationStatusServiceMapper.class);
+    AccountingOperationTypeServiceMapper ACCOUNTING_OPERATION_TYPE_SERVICE_MAPPER =
+            Mappers.getMapper(AccountingOperationTypeServiceMapper.class);
 
     @Override
-    @Mapping(target = "reportType", source = "reportType", qualifiedByName = "reportTypeEntityToReportTypeModel")
+    @Mapping(target = "accountingOperationType", source = "accountingOperationType", qualifiedByName = "accountingOperationEntityToModel")
     @Mapping(target = "client", source = "client", qualifiedByName = "clientEntityToClientModel")
     @Mapping(target = "assignedUser", source = "user", qualifiedByName = "userEntityToUserModel")
-    @Mapping(target = "latestReportStatus", source = "latestReportStatus", qualifiedByName = "latestReportStatus")
+    @Mapping(target = "latestStatus", source = "latestStatus", qualifiedByName = "latestReportStatus")
     AccountingOperationModel toModel(AccountingOperationEntity entity);
 
     @Override
-    @Mapping(target = "reportType", source = "reportType", qualifiedByName = "reportTypeModelToReportTypeEntity")
+    @Mapping(target = "accountingOperationType", source = "accountingOperationType", qualifiedByName = "accountingOperationModelToEntity")
     @Mapping(target = "client", source = "client", qualifiedByName = "clientModelToClientEntity")
     @Mapping(target = "user", source = "assignedUser", qualifiedByName = "userModelToUserEntity")
     AccountingOperationEntity toEntity(AccountingOperationModel dto);
@@ -39,16 +41,16 @@ public interface AccountingOperationServiceMapper extends ServiceMapper<Accounti
         return CLIENT_SERVICE_MAPPER.toModel(entity);
     }
 
-    @Named("reportTypeModelToReportTypeEntity")
-    default ReportTypeEntity reportTypeModelToReportTypeEntity(ReportTypeModel model) {
-        ReportTypeEntity reportTypeEntity = new ReportTypeEntity();
-        reportTypeEntity.setId(model.getId());
-        return reportTypeEntity;
+    @Named("accountingOperationModelToEntity")
+    default AccountingOperationTypeEntity accountingOperationModelToEntity(AccountingOperationTypeModel model) {
+        AccountingOperationTypeEntity accountingOperationTypeEntity = new AccountingOperationTypeEntity();
+        accountingOperationTypeEntity.setId(model.getId());
+        return accountingOperationTypeEntity;
     }
 
-    @Named("reportTypeEntityToReportTypeModel")
-    default ReportTypeModel reportType(ReportTypeEntity entity) {
-        return REPORT_TYPE_SERVICE_MAPPER.toModel(entity);
+    @Named("accountingOperationEntityToModel")
+    default AccountingOperationTypeModel reportType(AccountingOperationTypeEntity entity) {
+        return ACCOUNTING_OPERATION_TYPE_SERVICE_MAPPER.toModel(entity);
     }
 
     @Named("userModelToUserEntity")
@@ -64,7 +66,7 @@ public interface AccountingOperationServiceMapper extends ServiceMapper<Accounti
     }
 
     @Named("latestReportStatus")
-    default ReportStatusModel latestReportStatus(ReportStatusEntity entity) {
-        return REPORT_STATUS_SERVICE_MAPPER.toModel(entity);
+    default AccountingOperationStatusModel latestReportStatus(AccountingOperationStatusEntity entity) {
+        return ACCOUNTING_OPERATION_STATUS_SERVICE_MAPPER.toModel(entity);
     }
 }

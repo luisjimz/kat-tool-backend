@@ -12,10 +12,10 @@ import java.util.Date;
 public class AccountingOperationModel {
 
     private Long id;
-    private ReportTypeModel reportType;
+    private AccountingOperationTypeModel accountingOperationType;
     private ClientModel client;
     private UserModel assignedUser;
-    private ReportStatusModel latestReportStatus;
+    private AccountingOperationStatusModel latestStatus;
     private Date creationDate;
 
     //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte

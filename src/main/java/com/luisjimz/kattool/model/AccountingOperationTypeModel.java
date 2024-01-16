@@ -12,10 +12,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Builder
-public class ReportTypeModel {
+public class AccountingOperationTypeModel {
     private Long id;
     private String name;
     private String description;
     private Date creationDate;
-    private Set<ReportStatusModel> statuses;
+    private Set<AccountingOperationStatusModel> statuses;
 }

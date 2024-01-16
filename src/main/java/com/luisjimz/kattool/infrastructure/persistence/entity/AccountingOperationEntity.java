@@ -25,10 +25,10 @@ public class AccountingOperationEntity {
 
     @ManyToOne
     @JoinColumn(name="report_type_id", nullable=false)
-    private ReportTypeEntity reportType;
+    private AccountingOperationTypeEntity accountingOperationType;
 
     @ManyToOne
-    private ReportStatusEntity latestReportStatus;
+    private AccountingOperationStatusEntity latestStatus;
 
     @Column(nullable = false)
     private final Date creationDate = new Date();}

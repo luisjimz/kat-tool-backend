@@ -20,18 +20,18 @@ public class AccountingReportEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private final Date creationDate = new Date();
-
-    @OneToMany(mappedBy = "accountingReport")
-    private Set<AccountingOperationEntity> operations;
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private ClientEntity client;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity assignedUser;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private ClientEntity client;
+    @OneToMany(mappedBy = "accountingReport")
+    private Set<AccountingOperationEntity> operations;
+
+    @Column(nullable = false)
+    private final Date creationDate = new Date();
 
 }

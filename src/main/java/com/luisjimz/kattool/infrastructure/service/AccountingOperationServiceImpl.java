@@ -21,12 +21,12 @@ public class AccountingOperationServiceImpl implements AccountingOperationServic
     private ReportLatestStatusUtil reportLatestStatusUtil;
 
     @Override
-    public Collection<AccountingOperationModel> get() {
+    public Collection<AccountingOperationModel> getAll() {
         return repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
     }
 
     @Override
-    public AccountingOperationModel get(Long id) {
+    public AccountingOperationModel getAll(Long id) {
         Optional<AccountingOperationModel> o = repository.findById(id).map(mapper::toModel);
         return o.get();
     }

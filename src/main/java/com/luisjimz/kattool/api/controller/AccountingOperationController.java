@@ -25,13 +25,13 @@ public class AccountingOperationController {
                     service.findByDateSlug(dateSlug)
             );
         }
-        return ResponseEntity.ok(service.get());
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("accounting-operation/{reportId}")
     public ResponseEntity<AccountingOperationModel> getAccountingOperation(@PathVariable Long reportId) {
         return ResponseEntity.ok(
-                service.get(reportId)
+                service.getAll(reportId)
         );
     }
 

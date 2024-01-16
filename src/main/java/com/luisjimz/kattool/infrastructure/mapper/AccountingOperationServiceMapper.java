@@ -4,7 +4,6 @@ import com.luisjimz.kattool.domain.model.AccountingOperationModel;
 import com.luisjimz.kattool.domain.model.AccountingOperationStatusModel;
 import com.luisjimz.kattool.domain.model.AccountingOperationTypeModel;
 import com.luisjimz.kattool.infrastructure.persistence.entity.*;
-import com.luisjimz.kattool.model.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

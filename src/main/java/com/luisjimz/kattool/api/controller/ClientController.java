@@ -32,13 +32,13 @@ public class ClientController {
     })
     @GetMapping("clients")
     public ResponseEntity<Collection<ClientModel>> getClients() {
-        return ResponseEntity.ok(clientService.get());
+        return ResponseEntity.ok(clientService.getAll());
     }
 
     @GetMapping("clients/{clientId}")
     public ResponseEntity<ClientModel> getClient(@PathVariable Long clientId) {
         return ResponseEntity.ok(
-                clientService.get(clientId)
+                clientService.getAll(clientId)
         );
     }
 

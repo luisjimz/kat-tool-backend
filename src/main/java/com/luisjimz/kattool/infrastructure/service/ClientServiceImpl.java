@@ -18,12 +18,12 @@ public class ClientServiceImpl implements ClientService {
     private ClientServiceMapper mapper;
 
     @Override
-    public Collection<ClientModel> get() {
+    public Collection<ClientModel> getAll() {
         return this.repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
     }
 
     @Override
-    public ClientModel get(Long id) {
+    public ClientModel getAll(Long id) {
         return repository.findById(id).map(mapper::toModel).orElse(null);
     }
 

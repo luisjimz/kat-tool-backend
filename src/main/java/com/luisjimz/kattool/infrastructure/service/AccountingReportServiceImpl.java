@@ -4,11 +4,14 @@ import com.luisjimz.kattool.domain.model.AccountingReportModel;
 import com.luisjimz.kattool.domain.service.AccountingOperationService;
 import com.luisjimz.kattool.domain.service.AccountingReportService;
 import com.luisjimz.kattool.infrastructure.mapper.AccountingReportServiceMapper;
+import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
 import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingReportRepository;
+import com.luisjimz.kattool.infrastructure.persistence.repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -16,6 +19,7 @@ import java.util.stream.Collectors;
 public class AccountingReportServiceImpl implements AccountingReportService {
 
     private final AccountingReportRepository repository;
+    private final ClientRepository clientRepository;
     private final AccountingReportServiceMapper mapper;
     private final AccountingOperationService accountingOperationService;
     @Override
@@ -30,6 +34,8 @@ public class AccountingReportServiceImpl implements AccountingReportService {
 
     @Override
     public AccountingReportModel save(AccountingReportModel model) {
+        ClientEntity clientEntity = clientRepository.findById(model.getClient().getId()).get();
+
         return mapper.toModel(repository.save(mapper.toEntity(model)));
     }
 

@@ -4,6 +4,7 @@ import com.luisjimz.kattool.api.http.AccountingReportCreateHttpRequest;
 import com.luisjimz.kattool.api.mapper.AccountingReportMapper;
 import com.luisjimz.kattool.domain.model.AccountingReportModel;
 import com.luisjimz.kattool.domain.service.AccountingReportService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.Collection;
 
 @RestController
 @AllArgsConstructor
+@Tag(name = "Accounting Report API")
 public class AccountingReportController {
 
     private AccountingReportService service;

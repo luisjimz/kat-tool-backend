@@ -1,9 +1,11 @@
 package com.luisjimz.kattool.infrastructure.service;
 
+import com.luisjimz.kattool.domain.model.ClientModel;
 import com.luisjimz.kattool.domain.service.ClientService;
 import com.luisjimz.kattool.infrastructure.mapper.ClientServiceMapper;
+import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
+import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationTypeRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ClientRepository;
-import com.luisjimz.kattool.domain.model.ClientModel;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class ClientServiceImpl implements ClientService {
 
     private ClientRepository repository;
     private ClientServiceMapper mapper;
+    private AccountingOperationTypeRepository accountingOperationTypeRepository;
 
     @Override
     public Collection<ClientModel> getAll() {

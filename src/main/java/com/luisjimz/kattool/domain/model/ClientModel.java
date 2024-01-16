@@ -19,5 +19,5 @@ public class ClientModel{
     private String adminPhone;
     private String adminEmail;
     private String headquarterState;
-    private List<String> reports;
+    private List<AccountingOperationTypeModel> operations;
 }

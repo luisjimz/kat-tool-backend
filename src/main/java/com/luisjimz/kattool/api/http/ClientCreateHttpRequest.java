@@ -14,4 +14,5 @@ public class ClientCreateHttpRequest {
     private String adminPhone;
     private String adminEmail;
     private String headquarterState;
+    private List<Long> operations;
 }

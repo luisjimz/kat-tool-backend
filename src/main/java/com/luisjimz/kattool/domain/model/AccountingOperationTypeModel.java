@@ -18,4 +18,8 @@ public class AccountingOperationTypeModel {
     private String description;
     private Date creationDate;
     private Set<AccountingOperationStatusModel> statuses;
+
+    public AccountingOperationTypeModel(Long id) {
+        this.id = id;
+    }
 }

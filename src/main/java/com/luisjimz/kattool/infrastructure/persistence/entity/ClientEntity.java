@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -21,6 +24,13 @@ public class ClientEntity {
     private String adminPhone;
     private String adminEmail;
     private String headquarterState;
-    //todo add ReportEntity here relationship one to many
-//    private List<String> reports;
+
+    @ManyToMany
+    @JoinTable(
+            name = "clients_operations",
+            joinColumns = @JoinColumn(name = "clientId"),
+            inverseJoinColumns = @JoinColumn(name = "operationId")
+    )
+    private List<AccountingOperationTypeEntity> operationTypes;
+
 }

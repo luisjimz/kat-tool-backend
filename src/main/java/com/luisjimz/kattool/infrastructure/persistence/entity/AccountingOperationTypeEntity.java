@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "report_type")
+@Table(name = "accounting_operation_type")
 public class AccountingOperationTypeEntity {
 
     @Id
@@ -35,7 +36,7 @@ public class AccountingOperationTypeEntity {
             joinColumns = @JoinColumn(name = "typeId"),
             inverseJoinColumns = @JoinColumn(name = "statusId")
     )
-    private Set<AccountingOperationStatusEntity> statuses;
+    private List<AccountingOperationStatusEntity> statuses;
 
     public AccountingOperationTypeEntity(Long id) {
         this.id = id;

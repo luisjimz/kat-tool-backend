@@ -45,7 +45,7 @@ public class ClientController {
     @PostMapping("clients")
     public ResponseEntity<ClientModel> create(@RequestBody ClientCreateHttpRequest client) {
         return ResponseEntity.ok(
-                this.clientService.save(mapper.toModel(client))
+                this.clientService.create(mapper.toModel(client))
         );
     }
 

@@ -38,7 +38,7 @@ public class AccountingOperationController {
     @PostMapping("accounting-operation")
     public ResponseEntity<AccountingOperationModel> create(@RequestBody AccountingOperationCreateHttpRequest report) {
         return ResponseEntity.ok(
-                this.service.save(mapper.toModel(report))
+                this.service.create(mapper.toModel(report))
         );
     }
 

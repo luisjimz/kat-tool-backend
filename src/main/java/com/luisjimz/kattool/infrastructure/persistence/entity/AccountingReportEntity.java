@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -29,7 +31,7 @@ public class AccountingReportEntity {
     private UserEntity assignedUser;
 
     @OneToMany(mappedBy = "accountingReport")
-    private Set<AccountingOperationEntity> operations;
+    private List<AccountingOperationEntity> operations;
 
     @Column(nullable = false)
     private final Date creationDate = new Date();

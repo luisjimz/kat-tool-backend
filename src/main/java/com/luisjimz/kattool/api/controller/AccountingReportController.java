@@ -29,7 +29,7 @@ public class AccountingReportController {
 
     @PostMapping("/accounting-report")
     ResponseEntity<AccountingReportModel> create(@RequestBody AccountingReportCreateHttpRequest httpRequest) {
-        return ResponseEntity.ok(service.save(mapper.toModel(httpRequest)));
+        return ResponseEntity.ok(service.create(mapper.toModel(httpRequest)));
     }
 
 

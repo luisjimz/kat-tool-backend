@@ -9,6 +9,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,8 +24,8 @@ public interface AccountingOperationTypeServiceMapper extends ServiceMapper<Acco
     AccountingOperationTypeModel toModel(AccountingOperationTypeEntity entity);
 
     @Named("accountingOperationStatuses")
-    default Set<AccountingOperationStatusModel> reportsStatuses(Set<AccountingOperationStatusEntity> entities) {
-        if(entities == null || entities.isEmpty()) return Set.of();
-        return entities.stream().map(ACCOUNTING_OPERATION_STATUS_SERVICE_MAPPER::toModel).collect(Collectors.toSet());
+    default List<AccountingOperationStatusModel> reportsStatuses(List<AccountingOperationStatusEntity> entities) {
+        if(entities == null || entities.isEmpty()) return Collections.emptyList();
+        return entities.stream().map(ACCOUNTING_OPERATION_STATUS_SERVICE_MAPPER::toModel).collect(Collectors.toList());
     }
 }

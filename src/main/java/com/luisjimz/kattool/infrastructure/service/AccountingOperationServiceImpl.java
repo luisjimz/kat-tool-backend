@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -37,7 +39,7 @@ public class AccountingOperationServiceImpl implements AccountingOperationServic
     }
 
     @Override
-    public AccountingOperationModel save(AccountingOperationModel model) {
+    public AccountingOperationModel create(AccountingOperationModel model) {
         AccountingOperationEntity entity = mapper.toEntity(model);
         entity.setLatestStatus(reportLatestStatusUtil.fromReportType(entity.getAccountingOperationType()));
         entity = repository.save(entity);
@@ -51,5 +53,10 @@ public class AccountingOperationServiceImpl implements AccountingOperationServic
                 .stream()
                 .map(mapper::toModel)
                 .collect(Collectors.toList());
+    }
+
+    //todo this shouldn't be void, but will leave it as is for now since this will only be processed in the backend
+    public void create(Collection<AccountingOperationModel> models) {
+        repository.saveAll(models.stream().map(mapper::toEntity).collect(Collectors.toList()));
     }
 }

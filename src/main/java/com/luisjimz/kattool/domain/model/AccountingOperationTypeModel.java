@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -17,7 +18,7 @@ public class AccountingOperationTypeModel {
     private String name;
     private String description;
     private Date creationDate;
-    private Set<AccountingOperationStatusModel> statuses;
+    private List<AccountingOperationStatusModel> statuses;
 
     public AccountingOperationTypeModel(Long id) {
         this.id = id;

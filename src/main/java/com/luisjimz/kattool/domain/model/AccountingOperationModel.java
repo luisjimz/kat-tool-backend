@@ -12,11 +12,10 @@ import java.util.Date;
 public class AccountingOperationModel {
 
     private Long id;
+    private AccountingReportModel accountingReport;
     private AccountingOperationTypeModel accountingOperationType;
     private AccountingOperationStatusModel latestStatus;
     private Date creationDate;
-
-    //todo hacer una tabla con llave compuesta para guardar Status de Reporte por tipo de reporte
 
     /*
     * IMSS

@@ -15,6 +15,7 @@ public class ClientModel{
     private Long id;
     private String name;
     private String email;
+    private String rfc;
     private String adminFullName;
     private String adminPhone;
     private String adminEmail;

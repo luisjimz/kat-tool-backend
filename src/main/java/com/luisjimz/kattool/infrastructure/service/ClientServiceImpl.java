@@ -37,7 +37,7 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public ClientModel save(ClientModel userModel) {
+    public ClientModel create(ClientModel userModel) {
         return mapper.toModel(repository.save(mapper.toEntity(userModel)));
     }
 }

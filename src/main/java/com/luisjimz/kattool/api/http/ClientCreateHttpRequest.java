@@ -16,4 +16,5 @@ public class ClientCreateHttpRequest {
     private String fiscalAddress;
     private String headquarterState;
     private List<Long> operations;
+    private Long assignedAccountantId;
 }

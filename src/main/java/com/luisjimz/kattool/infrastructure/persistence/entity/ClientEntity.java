@@ -33,4 +33,7 @@ public class ClientEntity {
     )
     private List<AccountingOperationTypeEntity> operationTypes;
 
+    @ManyToOne
+    private UserEntity assignedAccountant;
+
 }

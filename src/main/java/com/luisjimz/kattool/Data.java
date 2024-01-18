@@ -25,8 +25,8 @@ public class Data {
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
         if ("create".equals(environment.getProperty("spring.jpa.hibernate.ddl-auto"))) {
-            getClients().forEach(clientRepository::save);
             getUsers().forEach(userRepository::save);
+            getClients().forEach(clientRepository::save);
             getReportStatuses().forEach(accountingOperationStatusRepository::save);
             getReportTypes().forEach(accountingOperationTypeRepository::save);
             AccountingOperationTypeEntity entity = accountingOperationTypeRepository.findById(1L).get();
@@ -196,6 +196,7 @@ public class Data {
                         "8333248978",
                         "Doña Cecilia #907, Colonia Lazaro Cardenas",
                         "Tamaulipas",
+                        null,
                         null
                 )
         );
@@ -210,7 +211,8 @@ public class Data {
                         "8331492030",
                         "Greene Avenue #1131, Bushwick",
                         "Tamaulipas",
-                        null
+                        null,
+                        UserEntity.builder().id(1L).build()
                 )
         );
 
@@ -224,7 +226,8 @@ public class Data {
                         "8334202030",
                         "Greene Avenue #1131, Bushwick",
                         "Tamaulipas",
-                        null
+                        null,
+                        UserEntity.builder().id(1L).build()
                 )
         );
         return entities;

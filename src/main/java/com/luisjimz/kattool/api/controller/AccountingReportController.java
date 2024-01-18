@@ -7,10 +7,7 @@ import com.luisjimz.kattool.domain.service.AccountingReportService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -23,13 +20,19 @@ public class AccountingReportController {
     private AccountingReportMapper mapper;
 
     @GetMapping("/accounting-report")
-    ResponseEntity<Collection<AccountingReportModel>> getReports() {
-        return ResponseEntity.ok(service.getAll());
+    ResponseEntity<Collection<AccountingReportModel>> getReports(
+            @RequestParam(required = false, defaultValue = "01-2024") String dateSlug) {
+        return ResponseEntity.ok(service.get(dateSlug));
     }
 
     @PostMapping("/accounting-report")
     ResponseEntity<AccountingReportModel> create(@RequestBody AccountingReportCreateHttpRequest httpRequest) {
         return ResponseEntity.ok(service.create(mapper.toModel(httpRequest)));
+    }
+
+    @DeleteMapping("/accounting-report")
+    void delete(Long id) {
+        service.delete(id);
     }
 
 

@@ -13,6 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "accounting_report")
+@NamedQuery(name = "AccountingReportEntity.findByYearAndMonth",
+        query = "SELECT m FROM AccountingReportEntity m WHERE EXTRACT(YEAR FROM m.creationDate) = :year AND EXTRACT(MONTH FROM m.creationDate) = :month")
 public class AccountingReportEntity {
 
     @Id

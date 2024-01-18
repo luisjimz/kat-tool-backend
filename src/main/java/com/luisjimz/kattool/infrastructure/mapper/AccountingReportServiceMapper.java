@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,6 +63,7 @@ public interface AccountingReportServiceMapper extends ServiceMapper<AccountingR
 
     @Named("operationEntityToModel")
     default List<AccountingOperationModel> operationEntityToModel(List<AccountingOperationEntity> entities) {
+        if(entities == null || entities.isEmpty()) return Collections.emptyList();
         return entities.stream().map(entity -> new AccountingOperationModel(
                 entity.getId(),
                 null,

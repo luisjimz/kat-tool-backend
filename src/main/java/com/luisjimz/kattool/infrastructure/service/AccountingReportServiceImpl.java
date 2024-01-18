@@ -67,4 +67,21 @@ public class AccountingReportServiceImpl implements AccountingReportService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public List<AccountingReportModel> findByDateSlug(String dateSlug) {
+
+        return null;
+    }
+
+    @Override
+    public Collection<AccountingReportModel> get(String dateSlug) {
+        if (dateSlug == null)
+            return repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
+        int[] yearAndMonth = DateUtil.getYearAndMonth(dateSlug);
+        return repository.findByYearAndMonth(yearAndMonth[0], yearAndMonth[1])
+                .stream()
+                .map(mapper::toModel)
+                .collect(Collectors.toList());
+    }
 }

@@ -20,12 +20,12 @@ public interface AccountingOperationTypeServiceMapper extends ServiceMapper<Acco
     AccountingOperationStatusServiceMapper ACCOUNTING_OPERATION_STATUS_SERVICE_MAPPER =
             Mappers.getMapper(AccountingOperationStatusServiceMapper.class);
     @Override
-    @Mapping(target = "statuses", source = "statuses", qualifiedByName = "accountingOperationStatuses")
+//    @Mapping(target = "statuses", source = "statuses", qualifiedByName = "accountingOperationStatuses")
     AccountingOperationTypeModel toModel(AccountingOperationTypeEntity entity);
 
-    @Named("accountingOperationStatuses")
-    default List<AccountingOperationStatusModel> reportsStatuses(List<AccountingOperationStatusEntity> entities) {
-        if(entities == null || entities.isEmpty()) return Collections.emptyList();
-        return entities.stream().map(ACCOUNTING_OPERATION_STATUS_SERVICE_MAPPER::toModel).collect(Collectors.toList());
-    }
+//    @Named("accountingOperationStatuses")
+//    default List<AccountingOperationStatusModel> reportsStatuses(List<AccountingOperationStatusEntity> entities) {
+//        if(entities == null || entities.isEmpty()) return Collections.emptyList();
+//        return entities.stream().map(ACCOUNTING_OPERATION_STATUS_SERVICE_MAPPER::toModel).collect(Collectors.toList());
+//    }
 }

@@ -20,11 +20,11 @@ public interface ClientServiceMapper extends ServiceMapper<ClientEntity, ClientM
             Mappers.getMapper(AccountingOperationTypeServiceMapper.class);
 
     @Override
-    @Mapping(source = "operationTypes", target = "operations", qualifiedByName = "toOperationTypeModel")
+    @Mapping(source = "operationTypes", target = "enabledOperations", qualifiedByName = "toOperationTypeModel")
     ClientModel toModel(ClientEntity entity);
 
     @Override
-    @Mapping(source = "operations", target = "operationTypes", qualifiedByName = "toOperationTypeEntity")
+    @Mapping(source = "enabledOperations", target = "operationTypes", qualifiedByName = "toOperationTypeEntity")
     ClientEntity toEntity(ClientModel model);
 
     @Named("toOperationTypeModel")

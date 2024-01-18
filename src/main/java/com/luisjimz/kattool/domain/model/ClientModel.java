@@ -20,5 +20,5 @@ public class ClientModel{
     private String adminPhone;
     private String adminEmail;
     private String headquarterState;
-    private List<AccountingOperationTypeModel> operations;
+    private List<AccountingOperationTypeModel> enabledOperations;
 }

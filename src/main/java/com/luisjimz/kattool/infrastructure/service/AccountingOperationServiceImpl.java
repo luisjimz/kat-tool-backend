@@ -1,16 +1,14 @@
 package com.luisjimz.kattool.infrastructure.service;
 
+import com.luisjimz.kattool.domain.model.AccountingOperationModel;
 import com.luisjimz.kattool.domain.service.AccountingOperationService;
 import com.luisjimz.kattool.infrastructure.mapper.AccountingOperationServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationEntity;
-import com.luisjimz.kattool.domain.model.AccountingOperationModel;
 import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 

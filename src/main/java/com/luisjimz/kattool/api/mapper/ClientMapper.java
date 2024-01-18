@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
 
-    @Mapping(target = "operations", source = "operations", qualifiedByName = "toOperationsEntity")
+    @Mapping(target = "enabledOperations", source = "operations", qualifiedByName = "toOperationsEntity")
     ClientModel toModel(ClientCreateHttpRequest httpRequest);
 
     @Named("toOperationsEntity")

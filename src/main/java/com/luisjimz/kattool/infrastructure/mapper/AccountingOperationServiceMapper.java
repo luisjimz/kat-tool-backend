@@ -19,6 +19,7 @@ public interface AccountingOperationServiceMapper extends ServiceMapper<Accounti
     @Override
     @Mapping(target = "accountingOperationType", source = "accountingOperationType", qualifiedByName = "accountingOperationEntityToModel")
     @Mapping(target = "latestStatus", source = "latestStatus", qualifiedByName = "latestReportStatus")
+    @Mapping(target = "accountingReport", ignore = true)
     AccountingOperationModel toModel(AccountingOperationEntity entity);
 
     @Override

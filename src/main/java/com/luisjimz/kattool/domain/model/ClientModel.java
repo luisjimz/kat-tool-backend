@@ -14,11 +14,12 @@ import java.util.List;
 public class ClientModel{
     private Long id;
     private String name;
-    private String email;
     private String rfc;
+    private String email;
     private String adminFullName;
     private String adminPhone;
     private String adminEmail;
+    private String fiscalAddress;
     private String headquarterState;
     private List<AccountingOperationTypeModel> enabledOperations;
 }

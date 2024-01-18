@@ -15,7 +15,7 @@ public class AccountingReportModel {
     private Long id;
     private ClientModel client;
     private UserModel assignedUser;
-    private List<AccountingOperationModel> operations;
+    private List<AccountingOperationModel> relatedOperations;
     private Date creationDate;
 
 }

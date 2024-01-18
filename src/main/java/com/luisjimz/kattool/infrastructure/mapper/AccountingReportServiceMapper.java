@@ -33,7 +33,7 @@ public interface AccountingReportServiceMapper extends ServiceMapper<AccountingR
     @Override
     @Mapping(target = "client", source = "client", qualifiedByName = "clientEntityToClientModel")
     @Mapping(target = "assignedUser", source = "assignedUser", qualifiedByName = "userEntityToUserModel")
-    @Mapping(target = "operations", source = "operations", qualifiedByName = "operationEntityToModel")
+    @Mapping(target = "relatedOperations", source = "relatedOperations", qualifiedByName = "operationEntityToModel")
     AccountingReportModel toModel(AccountingReportEntity entity);
 
     @Named("clientModelToClientEntity")

@@ -189,12 +189,12 @@ public class Data {
         entities.add(
                 new ClientEntity(
                         null,
-                        "Atletico de Reynosa",
-                        "Distibuidora laga",
-                        "XEXX010101000",
-                        "Juan Perez",
-                        "8331002030",
-                        "juan.perez@atletico.com",
+                        "Agape Muebleria",
+                        "JIAL940215487",
+                        "luisjimz94@gmail.com",
+                        "Luis Jimenez",
+                        "8333248978",
+                        "Doña Cecilia #907, Colonia Lazaro Cardenas",
                         "Tamaulipas",
                         null
                 )
@@ -204,11 +204,11 @@ public class Data {
                 new ClientEntity(
                         null,
                         "Distibuidora Alaga",
-                        "contacto@distibuidoralaga.com",
                         "XEXX010101000",
+                        "contacto@distibuidoralaga.com",
                         "Juan Perez",
                         "8331492030",
-                        "juan.perez@atletico.com",
+                        "Greene Avenue #1131, Bushwick",
                         "Tamaulipas",
                         null
                 )
@@ -218,11 +218,11 @@ public class Data {
                 new ClientEntity(
                         null,
                         "Industrial Basanlo",
-                        "contacto@basanlo.com",
                         "XEXX010101000",
+                        "contacto@basanlo.com",
                         "Juan Perez",
                         "8334202030",
-                        "juan.perez@atletico.com",
+                        "Greene Avenue #1131, Bushwick",
                         "Tamaulipas",
                         null
                 )

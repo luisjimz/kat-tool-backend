@@ -22,5 +22,5 @@ public class ClientModel{
     private String fiscalAddress;
     private String headquarterState;
     private List<AccountingOperationTypeModel> enabledOperations;
-    private UserEntity assignedAccountant;
+    private UserModel assignedAccountant;
 }

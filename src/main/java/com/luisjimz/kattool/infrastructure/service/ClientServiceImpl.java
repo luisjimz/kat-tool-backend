@@ -4,8 +4,10 @@ import com.luisjimz.kattool.domain.model.ClientModel;
 import com.luisjimz.kattool.domain.service.ClientService;
 import com.luisjimz.kattool.infrastructure.mapper.ClientServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
+import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
 import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationTypeRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ClientRepository;
+import com.luisjimz.kattool.infrastructure.persistence.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,15 @@ import java.util.stream.Collectors;
 public class ClientServiceImpl implements ClientService {
 
     private ClientRepository repository;
+    private UserRepository userRepository;
     private ClientServiceMapper mapper;
     private AccountingOperationTypeRepository accountingOperationTypeRepository;
+
+    @Override
+    public ClientModel save(ClientModel model) {
+        userRepository.findById(model.getAssignedAccountant().getId());
+        return mapper.toModel(this.repository.save(mapper.toEntity(model)));
+    }
 
     @Override
     public Collection<ClientModel> getAll() {
@@ -37,7 +46,9 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public ClientModel create(ClientModel userModel) {
-        return mapper.toModel(repository.save(mapper.toEntity(userModel)));
-    }
+    public ClientModel create(ClientModel model) {
+        UserEntity userEntity = userRepository.findById(model.getAssignedAccountant().getId()).get();
+        ClientEntity newEntity = mapper.toEntity(model);
+        newEntity.setAssignedAccountant(userEntity);
+        return mapper.toModel(this.repository.save(newEntity));    }
 }

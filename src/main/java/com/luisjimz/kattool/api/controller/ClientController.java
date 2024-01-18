@@ -49,6 +49,13 @@ public class ClientController {
         );
     }
 
+    @PutMapping("clients")
+    public ResponseEntity<ClientModel> update(@RequestBody ClientModel client) {
+        return ResponseEntity.ok(
+                this.clientService.save(client)
+        );
+    }
+
     @DeleteMapping("clients")
     public ResponseEntity<?> delete(Long id) {
         clientService.delete(id);

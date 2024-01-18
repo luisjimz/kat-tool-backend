@@ -21,6 +21,11 @@ public class AccountingOperationServiceImpl implements AccountingOperationServic
     private ReportLatestStatusUtil reportLatestStatusUtil;
 
     @Override
+    public AccountingOperationModel save(AccountingOperationModel accountingOperationModel) {
+        throw new RuntimeException("method not implemented");
+    }
+
+    @Override
     public Collection<AccountingOperationModel> getAll() {
         return repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
     }

@@ -15,7 +15,7 @@ import java.util.*;
 
 @Component
 @AllArgsConstructor
-public class Data {
+public class DummyData {
 
     private final UserRepository userRepository;
     private final ClientRepository clientRepository;
@@ -197,7 +197,7 @@ public class Data {
                         "Doña Cecilia #907, Colonia Lazaro Cardenas",
                         "Tamaulipas",
                         null,
-                        null
+                        UserEntity.builder().id(1L).build()
                 )
         );
 

@@ -33,6 +33,12 @@ public class AccountingReportServiceImpl implements AccountingReportService {
     private final AccountingOperationServiceImpl accountingOperationService;
 
     @Override
+    public AccountingReportModel save(AccountingReportModel reportModel) {
+        throw new RuntimeException("method not implemented");
+//        return null;
+    }
+
+    @Override
     public Collection<AccountingReportModel> getAll() {
         return repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
     }

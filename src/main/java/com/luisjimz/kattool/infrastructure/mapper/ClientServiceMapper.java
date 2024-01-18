@@ -2,8 +2,10 @@ package com.luisjimz.kattool.infrastructure.mapper;
 
 import com.luisjimz.kattool.domain.model.AccountingOperationTypeModel;
 import com.luisjimz.kattool.domain.model.ClientModel;
+import com.luisjimz.kattool.domain.model.UserModel;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationTypeEntity;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
+import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -19,8 +21,12 @@ public interface ClientServiceMapper extends ServiceMapper<ClientEntity, ClientM
     AccountingOperationTypeServiceMapper ACCOUNTING_OPERATION_TYPE_SERVICE_MAPPER =
             Mappers.getMapper(AccountingOperationTypeServiceMapper.class);
 
+    UserServiceMapper USER_SERVICE_MAPPER =
+            Mappers.getMapper(UserServiceMapper.class);
+
     @Override
     @Mapping(source = "operationTypes", target = "enabledOperations", qualifiedByName = "toOperationTypeModel")
+    @Mapping(source = "assignedAccountant", target = "assignedAccountant", qualifiedByName = "toUserModel")
     ClientModel toModel(ClientEntity entity);
 
     @Override
@@ -40,5 +46,9 @@ public interface ClientServiceMapper extends ServiceMapper<ClientEntity, ClientM
                 .map(model -> new AccountingOperationTypeEntity(model.getId())).collect(Collectors.toList());
     }
 
+    @Named("toUserModel")
+    default UserModel toUserModel(UserEntity entity) {
+        return USER_SERVICE_MAPPER.toModel(entity);
+    }
 
 }

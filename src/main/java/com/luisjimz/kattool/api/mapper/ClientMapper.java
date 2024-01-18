@@ -3,6 +3,8 @@ package com.luisjimz.kattool.api.mapper;
 import com.luisjimz.kattool.api.http.ClientCreateHttpRequest;
 import com.luisjimz.kattool.domain.model.AccountingOperationTypeModel;
 import com.luisjimz.kattool.domain.model.ClientModel;
+import com.luisjimz.kattool.domain.model.UserModel;
+import com.luisjimz.kattool.infrastructure.mapper.UserServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationTypeEntity;
 import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
 import org.mapstruct.Mapper;
@@ -23,12 +25,13 @@ public interface ClientMapper {
 
     @Named("toOperationsEntity")
     default List<AccountingOperationTypeModel> toOperationsEntity(List<Long> operations) {
-        List<AccountingOperationTypeModel> models= operations.stream().map(id -> new AccountingOperationTypeModel(id)).collect(Collectors.toList());
+        List<AccountingOperationTypeModel> models
+                = operations.stream().map(id -> new AccountingOperationTypeModel(id)).collect(Collectors.toList());
         return models;
     }
 
     @Named("toUserEntity")
-    default UserEntity toUserEntity(Long userId) {
-        return UserEntity.builder().id(userId).build();
+    default UserModel toUserEntity(Long assignedAccountantId) {
+        return UserModel.builder().id(assignedAccountantId).build();
     }
 }

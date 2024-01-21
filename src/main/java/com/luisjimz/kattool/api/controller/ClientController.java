@@ -1,7 +1,8 @@
 package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.ClientCreateHttpRequest;
-import com.luisjimz.kattool.api.mapper.ClientMapper;
+import com.luisjimz.kattool.domain.model.AccountingOperationTypeModel;
+import com.luisjimz.kattool.domain.model.UserModel;
 import com.luisjimz.kattool.domain.service.AccountingOperationService;
 import com.luisjimz.kattool.domain.model.ClientModel;
 import com.luisjimz.kattool.domain.service.ClientService;
@@ -14,16 +15,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
 @CrossOrigin
 @Tag(name = "Clients API")
 public class ClientController {
-    
+
     private ClientService clientService;
     private AccountingOperationService accountingOperationService;
-    private ClientMapper mapper;
 
     @Operation(summary = "Return all available clients", description = "Returns all available clients")
     @ApiResponses(value = {
@@ -45,7 +46,19 @@ public class ClientController {
     @PostMapping("clients")
     public ResponseEntity<ClientModel> create(@RequestBody ClientCreateHttpRequest client) {
         return ResponseEntity.ok(
-                this.clientService.create(mapper.toModel(client))
+                this.clientService.create(
+                        new ClientModel(
+                                client.getName(),
+                                client.getRfc(),
+                                client.getEmail(),
+                                client.getAdminFullName(),
+                                client.getAdminPhone(),
+                                client.getFiscalAddress(),
+                                client.getHeadquarterState(),
+                                client.getOperations().stream().map(AccountingOperationTypeModel::new).collect(Collectors.toList()),
+                                new UserModel(client.getAssignedAccountantId())
+                        )
+                )
         );
     }
 

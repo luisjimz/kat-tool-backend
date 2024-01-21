@@ -11,4 +11,8 @@ public class UserModel {
     private String name;
     private String lastName;
     private String email;
+
+    public UserModel(Long assignedAccountantId) {
+        this.id = assignedAccountantId;
+    }
 }

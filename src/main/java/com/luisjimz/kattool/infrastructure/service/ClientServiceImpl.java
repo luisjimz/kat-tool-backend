@@ -1,7 +1,11 @@
 package com.luisjimz.kattool.infrastructure.service;
 
+import com.luisjimz.kattool.domain.model.AccountingReportModel;
 import com.luisjimz.kattool.domain.model.ClientModel;
+import com.luisjimz.kattool.domain.model.UserModel;
+import com.luisjimz.kattool.domain.service.AccountingReportService;
 import com.luisjimz.kattool.domain.service.ClientService;
+import com.luisjimz.kattool.domain.service.UserService;
 import com.luisjimz.kattool.infrastructure.mapper.ClientServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
 import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
@@ -19,14 +23,16 @@ import java.util.stream.Collectors;
 public class ClientServiceImpl implements ClientService {
 
     private ClientRepository repository;
+    private UserService userService;
     private UserRepository userRepository;
     private ClientServiceMapper mapper;
-    private AccountingOperationTypeRepository accountingOperationTypeRepository;
+    private AccountingReportService accountingReportService;
 
     @Override
     public ClientModel save(ClientModel model) {
         userRepository.findById(model.getAssignedAccountant().getId());
-        return mapper.toModel(this.repository.save(mapper.toEntity(model)));
+        ClientEntity newClient = repository.save(mapper.toEntity(model));
+        return mapper.toModel(newClient);
     }
 
     @Override
@@ -48,7 +54,16 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientModel create(ClientModel model) {
         UserEntity userEntity = userRepository.findById(model.getAssignedAccountant().getId()).get();
-        ClientEntity newEntity = mapper.toEntity(model);
-        newEntity.setAssignedAccountant(userEntity);
-        return mapper.toModel(this.repository.save(newEntity));    }
+        ClientEntity newClient = mapper.toEntity(model);
+        newClient.setAssignedAccountant(userEntity);
+        ClientModel newClientModel = mapper.toModel(this.repository.save(newClient));
+
+        accountingReportService.create(
+                new AccountingReportModel(
+                        new ClientModel(newClient.getId()),
+                        new UserModel(userEntity.getId())
+                )
+        );
+        return newClientModel;
+    }
 }

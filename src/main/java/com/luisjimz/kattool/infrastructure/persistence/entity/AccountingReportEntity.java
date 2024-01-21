@@ -15,6 +15,8 @@ import java.util.List;
 @Table(name = "accounting_report")
 @NamedQuery(name = "AccountingReportEntity.findByYearAndMonth",
         query = "SELECT m FROM AccountingReportEntity m WHERE EXTRACT(YEAR FROM m.creationDate) = :year AND EXTRACT(MONTH FROM m.creationDate) = :month")
+@NamedQuery(name = "AccountingReportEntity.findByYearAndMonthAndUserId",
+        query = "SELECT m FROM AccountingReportEntity m WHERE EXTRACT(YEAR FROM m.creationDate) = :year AND EXTRACT(MONTH FROM m.creationDate) = :month AND m.assignedUser = :userId")
 public class AccountingReportEntity {
 
     @Id

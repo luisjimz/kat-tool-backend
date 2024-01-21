@@ -10,6 +10,7 @@ import com.luisjimz.kattool.infrastructure.mapper.AccountingReportServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationTypeEntity;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingReportEntity;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
+import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
 import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingReportRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ClientRepository;
@@ -81,12 +82,15 @@ public class AccountingReportServiceImpl implements AccountingReportService {
     }
 
     @Override
-    public Collection<AccountingReportModel> get(String dateSlug) {
-        if (dateSlug == null)
-            return repository.findAll().stream().map(mapper::toModel).collect(Collectors.toList());
+    public Collection<AccountingReportModel> get(Long assignedUserId, String dateSlug) {
         int[] yearAndMonth = DateUtil.getYearAndMonth(dateSlug);
-        return repository.findByYearAndMonth(yearAndMonth[0], yearAndMonth[1])
-                .stream()
+        Collection<AccountingReportEntity> reports;
+        if (assignedUserId != null) {
+            reports = repository.findByYearAndMonthAndUserId(yearAndMonth[0], yearAndMonth[1], new UserEntity(assignedUserId));
+        } else {
+            reports = repository.findByYearAndMonth(yearAndMonth[0], yearAndMonth[1]);
+        }
+        return reports.stream()
                 .map(mapper::toModel)
                 .collect(Collectors.toList());
     }

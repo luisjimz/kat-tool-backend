@@ -4,6 +4,7 @@ import com.luisjimz.kattool.domain.model.AccountingOperationModel;
 import com.luisjimz.kattool.domain.service.AccountingOperationService;
 import com.luisjimz.kattool.infrastructure.mapper.AccountingOperationServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationEntity;
+import com.luisjimz.kattool.infrastructure.persistence.entity.AccountingOperationStatusEntity;
 import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,14 @@ public class AccountingOperationServiceImpl implements AccountingOperationServic
                 .stream()
                 .map(mapper::toModel)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public AccountingOperationModel updateLatestStatus(Long oprationId, Long statusId) {
+        AccountingOperationEntity entity = repository.findById(oprationId).get();
+        entity.setLatestStatus(new AccountingOperationStatusEntity(statusId));
+        entity = repository.save(entity);
+        return mapper.toModel(entity);
     }
 
     //todo this shouldn't be void, but will leave it as is for now since this will only be processed in the backend

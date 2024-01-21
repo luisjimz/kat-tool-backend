@@ -29,7 +29,13 @@ public class DummyData {
             getClients().forEach(clientRepository::save);
             getReportStatuses().forEach(accountingOperationStatusRepository::save);
             getReportTypes().forEach(accountingOperationTypeRepository::save);
-            AccountingOperationTypeEntity entity = accountingOperationTypeRepository.findById(1L).get();
+            setOperationStatus();
+        }
+    }
+
+    public void setOperationStatus() {
+        List<AccountingOperationTypeEntity> entities = accountingOperationTypeRepository.findAll();
+        entities.forEach(entity -> {
             entity.setStatuses(
                     List.of(
                             new AccountingOperationStatusEntity(1L),
@@ -44,15 +50,14 @@ public class DummyData {
                     )
             );
             accountingOperationTypeRepository.save(entity);
-        }
+        });
     }
-
     public List<AccountingOperationTypeEntity> getReportTypes() {
         List<AccountingOperationTypeEntity> entities = new LinkedList<>();
         entities.add(
                 new AccountingOperationTypeEntity(
                       1L,
-                      "Contabilidad de impuestos federales",
+                      "Impuestos federales",
                       "Descripción de Contabilidad de impuestos federales",
                         null
                 )
@@ -60,14 +65,14 @@ public class DummyData {
         entities.add(
                 new AccountingOperationTypeEntity(
                         2L,
-                        "Presentacion de impuestos estatales",
+                        "Impuestos estatales",
                         "Descripción de Presentacion de impuestos estatales",
                         null
                 )
         );
         entities.add(
                 new AccountingOperationTypeEntity(3L,
-                        "Proceso de nomina",
+                        "Nominas",
                         "Descripción de Proceso de nomina",
                         null
                 )

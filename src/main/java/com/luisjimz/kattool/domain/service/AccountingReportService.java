@@ -8,5 +8,7 @@ import java.util.List;
 public interface AccountingReportService extends ModelService<AccountingReportModel>{
     List<AccountingReportModel> findByDateSlug(String dateSlug);
 
-    Collection<AccountingReportModel> get(Long assignedUserId, String dateSlug);
+    Collection<AccountingReportModel> get(Long assignedUserId, Long dateSlug);
+    Collection<AccountingReportModel> getByClientId(Long clientId);
+
 }

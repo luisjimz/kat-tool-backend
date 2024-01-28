@@ -82,13 +82,23 @@ public class AccountingReportServiceImpl implements AccountingReportService {
     }
 
     @Override
-    public Collection<AccountingReportModel> get(Long assignedUserId, String dateSlug) {
-        int[] yearAndMonth = DateUtil.getYearAndMonth(dateSlug);
+    public Collection<AccountingReportModel> getByClientId(Long clientId) {
+        Collection<AccountingReportEntity> reports =  repository.findByClientId(clientId);
+        return reports.stream().map(mapper::toModel).collect(Collectors.toList());
+    }
+
+
+
+    @Override
+    public Collection<AccountingReportModel> get(Long assignedUserId, Long year) {
         Collection<AccountingReportEntity> reports;
-        if (assignedUserId != null) {
-            reports = repository.findByYearAndMonthAndUserId(yearAndMonth[0], yearAndMonth[1], new UserEntity(assignedUserId));
+        if(assignedUserId == null && year == null) {
+            reports = repository.findAll();
+        }
+        else if (assignedUserId != null) {
+            reports = repository.findByYearAndUserId(year, new UserEntity(assignedUserId));
         } else {
-            reports = repository.findByYearAndMonth(yearAndMonth[0], yearAndMonth[1]);
+            reports = repository.findByYear(year);
         }
         return reports.stream()
                 .map(mapper::toModel)

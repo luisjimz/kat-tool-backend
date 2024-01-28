@@ -5,11 +5,9 @@ import com.luisjimz.kattool.domain.model.ClientModel;
 import com.luisjimz.kattool.domain.model.UserModel;
 import com.luisjimz.kattool.domain.service.AccountingReportService;
 import com.luisjimz.kattool.domain.service.ClientService;
-import com.luisjimz.kattool.domain.service.UserService;
 import com.luisjimz.kattool.infrastructure.mapper.ClientServiceMapper;
 import com.luisjimz.kattool.infrastructure.persistence.entity.ClientEntity;
 import com.luisjimz.kattool.infrastructure.persistence.entity.UserEntity;
-import com.luisjimz.kattool.infrastructure.persistence.repository.AccountingOperationTypeRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.ClientRepository;
 import com.luisjimz.kattool.infrastructure.persistence.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -23,7 +21,6 @@ import java.util.stream.Collectors;
 public class ClientServiceImpl implements ClientService {
 
     private ClientRepository repository;
-    private UserService userService;
     private UserRepository userRepository;
     private ClientServiceMapper mapper;
     private AccountingReportService accountingReportService;

@@ -2,9 +2,11 @@ package com.luisjimz.kattool.api.controller;
 
 import com.luisjimz.kattool.api.http.ClientCreateHttpRequest;
 import com.luisjimz.kattool.domain.model.AccountingOperationTypeModel;
+import com.luisjimz.kattool.domain.model.AccountingReportModel;
 import com.luisjimz.kattool.domain.model.UserModel;
 import com.luisjimz.kattool.domain.service.AccountingOperationService;
 import com.luisjimz.kattool.domain.model.ClientModel;
+import com.luisjimz.kattool.domain.service.AccountingReportService;
 import com.luisjimz.kattool.domain.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 public class ClientController {
 
     private ClientService clientService;
+    private AccountingReportService accountingReportService;
     private AccountingOperationService accountingOperationService;
 
     @Operation(summary = "Return all available clients", description = "Returns all available clients")
@@ -40,6 +43,13 @@ public class ClientController {
     public ResponseEntity<ClientModel> getClient(@PathVariable Long clientId) {
         return ResponseEntity.ok(
                 clientService.getAll(clientId)
+        );
+    }
+
+    @GetMapping("clients/{clientId}/accounting-report")
+    public ResponseEntity<Collection<AccountingReportModel>> getReportsByClient(@PathVariable Long clientId) {
+        return ResponseEntity.ok(
+                accountingReportService.getByClientId(clientId)
         );
     }
 

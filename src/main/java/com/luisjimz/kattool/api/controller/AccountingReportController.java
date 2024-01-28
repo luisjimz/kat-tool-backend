@@ -22,8 +22,8 @@ public class AccountingReportController {
     @GetMapping("/accounting-report")
     ResponseEntity<Collection<AccountingReportModel>> getReports(
             @RequestParam(required = false) Long assignedUserId,
-            @RequestParam(required = true, defaultValue = "01-2024") String dateSlug) {
-        return ResponseEntity.ok(service.get(assignedUserId, dateSlug));
+            @RequestParam(defaultValue = "2024") Long year) {
+        return ResponseEntity.ok(service.get(assignedUserId, year));
     }
 
     @PostMapping("/accounting-report")
